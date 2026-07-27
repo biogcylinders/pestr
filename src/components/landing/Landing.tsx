@@ -118,10 +118,10 @@ function Hero() {
             Now serving 240+ properties across India
           </div>
           <h1 className="mt-6 text-4xl font-semibold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
-            Pest control that <span className="text-brass">shows its work.</span>
+            Reliable pest management <span className="text-brass">for hospitality.</span>
           </h1>
           <p className="mt-5 max-w-lg text-lg text-muted-foreground">
-            Simple, honest pest management for kitchens, hotels and restaurants — with every chemical disclosed, every visit documented, and a written 30-day guarantee.
+            Designed for hotels, restaurants and commercial kitchens—with complete treatment transparency, audit-ready documentation, and a written 30-day service guarantee.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <WhatsAppButton variant="primary" className="px-6 py-3 text-base">
@@ -176,15 +176,15 @@ function Hero() {
 
 function WhyUs() {
   const items = [
-    { icon: <Beaker />, title: "Full chemical transparency", body: "Every active ingredient we use — disclosed by name, dosage and safety data. No hidden mixes." },
-    { icon: <FileText />, title: "Docs after every visit", body: "Printable service reports and monthly dossiers, ready to hand to an FSSAI auditor." },
-    { icon: <BadgeCheck />, title: "30-day written guarantee", body: "See a pest within 30 days of a visit? We come back within 24 hours. No charge, no excuses." },
-    { icon: <ChefHat />, title: "Food-safe by default", body: "Protocols designed with chefs and food-safety officers — not warehouses or offices." },
-    { icon: <Users />, title: "Same technician, every time", body: "One lead tech per property. They know your kitchen, so nothing gets missed." },
-    { icon: <Clock3 />, title: "Off-hours visits", body: "We work around your service — early mornings, late nights, banquet gaps. Guests never notice." },
+    { icon: <Beaker />, title: "Complete treatment transparency", body: "Know exactly what was used, where it was applied, and why." },
+    { icon: <FileText />, title: "Service reports after every visit", body: "Signed service reports with treatment history and audit-ready documentation." },
+    { icon: <BadgeCheck />, title: "30-day written guarantee", body: "If pest activity returns within 30 days, we'll retreat the affected area at no additional cost." },
+    { icon: <ChefHat />, title: "Food-safe treatment protocols", body: "Treatment methods designed for kitchens, restaurants and hospitality spaces." },
+    { icon: <Users />, title: "Dedicated technician", body: "One dedicated technician familiar with your property and treatment history." },
+    { icon: <Clock3 />, title: "Flexible scheduling", body: "Early mornings, late evenings or between operations—without disrupting guests." },
   ];
   return (
-    <Section id="why" eyebrow="Why choose us" title="Six reasons hotels switch to Pestr." sub="Straightforward pest control built for hospitality — no jargon, no surprises.">
+    <Section id="why" eyebrow="Everything You'll Get With Pestr" title="Everything included with every service visit." sub="Every property receives the same transparent, documented service—every visit.">
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {items.map((it) => (
           <div key={it.title} className="rounded-xl border border-border bg-card p-6 transition-colors hover:border-brass/60">
@@ -209,8 +209,8 @@ function Chemicals() {
     <Section
       id="chemicals"
       eyebrow="Chemical transparency"
-      title="You'll always know what we spray."
-      sub="Every chemical we use, listed openly. Safety data sheets handed over before any treatment starts."
+      title="Every treatment is fully documented."
+      sub="Every treatment includes the products used, application areas, dosage information and corresponding safety documentation."
     >
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {items.map((c) => (
@@ -244,11 +244,11 @@ function Docs() {
     ["Signed off by", "Chef Anand · 08:04 AM"],
   ];
   return (
-    <Section id="docs" eyebrow="Documentation" title="Every visit comes with paperwork.">
+    <Section id="docs" eyebrow="Documentation" title="Documentation after every visit.">
       <div className="grid gap-8 rounded-2xl border border-border bg-card p-6 md:grid-cols-2 md:p-10">
         <div>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            You get a printable service report after every visit and a full compliance dossier every quarter — formatted for FSSAI, HACCP and hotel-chain audits. Nothing extra to prepare when the auditor walks in.
+            Receive signed service reports after every visit, along with quarterly compliance documentation for audits and internal records.
           </p>
           <ul className="mt-6 space-y-3 text-sm">
             {[
@@ -297,7 +297,7 @@ function Guarantee() {
               <BadgeCheck className="h-3.5 w-3.5" /> 30-day guarantee
             </div>
             <h2 className="mt-5 text-3xl font-semibold leading-tight md:text-4xl">
-              See a pest within 30 days? We're back in 24 hours — free.
+              If pest activity returns within 30 days, we'll revisit the affected area within 24 hours at no additional cost.
             </h2>
             <p className="mt-4 max-w-xl text-primary-foreground/80">
               It's in writing on every contract. No callout fee, no arguments, no fine print. That's the whole promise.
@@ -356,7 +356,7 @@ function Comparison() {
               <th className="px-5 py-4 text-left font-medium">Feature</th>
               <th className="px-5 py-4 font-medium">Local vendor</th>
               <th className="px-5 py-4 font-medium">National generalist</th>
-              <th className="bg-primary px-5 py-4 font-medium text-primary-foreground">Sentinel</th>
+              <th className="bg-primary px-5 py-4 font-medium text-primary-foreground">Pestr</th>
             </tr>
           </thead>
           <tbody>
@@ -423,50 +423,64 @@ function Industries() {
 }
 
 function Pricing() {
-  const tiers = [
-    { name: "Starter", price: "₹32k", tag: "Up to 80 keys", features: ["Monthly visits", "Quarterly dossier", "One outlet included", "Chemical disclosure"] },
-    { name: "Growth", price: "₹58k", tag: "Up to 200 keys", features: ["Weekly visits", "Monthly + quarterly dossier", "All F&B outlets", "Dedicated lead technician", "24-hr sighting response"], popular: true },
-    { name: "Scale", price: "Custom", tag: "200+ keys · multi-property", features: ["Resident technician option", "Live dashboard", "Bespoke kitchen protocols", "Annual executive review"] },
-  ];
   return (
     <Section
       id="pricing"
       eyebrow="Pricing"
-      title="Simple monthly plans."
-      sub="Indicative pricing — the final number comes after a free site walk."
+      title="Let's build a custom plan for your property."
+      sub="Pricing is customized after a complimentary site inspection."
     >
-      <div className="grid gap-5 md:grid-cols-3">
-        {tiers.map((t) => (
-          <div
-            key={t.name}
-            className={`flex h-full flex-col rounded-2xl border p-6 ${t.popular ? "border-brass bg-card shadow-sm" : "border-border bg-card"}`}
-          >
-            <div className="flex items-center justify-between">
-              <div className="text-xs font-medium uppercase tracking-wider text-brass">{t.tag}</div>
-              {t.popular && (
-                <span className="rounded-full bg-brass px-2 py-0.5 text-[10px] font-medium text-primary-foreground">
-                  Popular
-                </span>
-              )}
+      <div className="rounded-2xl border border-border bg-card p-8 md:p-12">
+        <div className="grid gap-8 md:grid-cols-[1.4fr_1fr] md:items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full bg-brass/10 px-3 py-1 text-xs font-medium uppercase tracking-widest text-brass">
+              <Sparkles className="h-3.5 w-3.5" /> Built around your property
             </div>
-            <div className="mt-3 text-xl font-semibold">{t.name}</div>
-            <div className="mt-2 text-4xl font-semibold text-foreground">
-              {t.price}
-              <span className="ml-1 text-sm font-normal text-muted-foreground">/mo</span>
-            </div>
-            <ul className="mt-6 space-y-2.5 text-sm text-muted-foreground">
-              {t.features.map((f) => (
-                <li key={f} className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-brass" />
-                  {f}
+            <h3 className="mt-4 text-2xl font-semibold md:text-3xl">
+              No cookie-cutter packages.
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              Every kitchen, hotel and outlet is different. After a free site inspection we put together a plan that fits your zones, visit windows and audit calendar — with pricing that reflects only what you actually need.
+            </p>
+            <ul className="mt-5 grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
+              {[
+                "Free site inspection",
+                "Written protocol in 72 hours",
+                "Transparent line-item pricing",
+                "No lock-in surprises",
+              ].map((l) => (
+                <li key={l} className="flex items-start gap-2">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-brass" /> {l}
                 </li>
               ))}
             </ul>
-            <WhatsAppButton variant={t.popular ? "accent" : "primary"} className="mt-8 w-full">
-              Get started
-            </WhatsAppButton>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <WhatsAppButton variant="primary">Build my custom plan</WhatsAppButton>
+              <a
+                href={`tel:+91${WA_NUMBER}`}
+                className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-3 text-sm font-medium hover:border-brass"
+              >
+                <Phone className="h-4 w-4" /> +91 {WA_NUMBER}
+              </a>
+            </div>
           </div>
-        ))}
+          <div className="rounded-xl border border-dashed border-border bg-muted/40 p-6 text-sm">
+            <div className="text-xs font-medium uppercase tracking-widest text-brass">What you get</div>
+            <div className="mt-4 space-y-3">
+              {[
+                ["Site walk", "On your schedule"],
+                ["Custom protocol", "Within 72 hours"],
+                ["Written quote", "Line-item, no jargon"],
+                ["Guarantee", "30 days, in writing"],
+              ].map(([k, v]) => (
+                <div key={k} className="flex justify-between border-b border-dashed border-border pb-2 last:border-0">
+                  <span className="text-muted-foreground">{k}</span>
+                  <span className="font-medium text-foreground">{v}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </Section>
   );
@@ -515,9 +529,9 @@ function FinalCTA() {
   return (
     <section className="mx-auto max-w-6xl px-6 pb-20">
       <div className="rounded-2xl border border-border bg-muted/40 px-8 py-14 text-center md:px-16">
-        <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Ready when you are.</h2>
+        <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Book a complimentary site inspection.</h2>
         <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-          Book a free site walk. We'll come, look, and send you a written protocol within 72 hours.
+          Schedule a complimentary site inspection. We'll assess your property and provide a customized treatment plan within 72 hours.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <WhatsAppButton variant="primary" className="px-6 py-3 text-base">
