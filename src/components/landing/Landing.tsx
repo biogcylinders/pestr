@@ -90,7 +90,7 @@ function Nav() {
           <span className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground">
             <ShieldCheck className="h-4 w-4" />
           </span>
-          <span className="text-base">Sentinel</span>
+          <span className="text-base">Pestr</span>
         </a>
         <div className="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
           <a href="#why" className="hover:text-foreground">Why us</a>
@@ -184,7 +184,7 @@ function WhyUs() {
     { icon: <Clock3 />, title: "Off-hours visits", body: "We work around your service — early mornings, late nights, banquet gaps. Guests never notice." },
   ];
   return (
-    <Section id="why" eyebrow="Why choose us" title="Six reasons hotels switch to Sentinel." sub="Straightforward pest control built for hospitality — no jargon, no surprises.">
+    <Section id="why" eyebrow="Why choose us" title="Six reasons hotels switch to Pestr." sub="Straightforward pest control built for hospitality — no jargon, no surprises.">
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {items.map((it) => (
           <div key={it.title} className="rounded-xl border border-border bg-card p-6 transition-colors hover:border-brass/60">
@@ -474,7 +474,7 @@ function Pricing() {
 
 function FAQ() {
   const items = [
-    { q: "How is Sentinel different from a national pest-control brand?", a: "We only serve hospitality — kitchens, F&B outlets and audit cycles. Everything is designed for that, not for warehouses or offices." },
+    { q: "How is Pestr different from a national pest-control brand?", a: "We only serve hospitality — kitchens, F&B outlets and audit cycles. Everything is designed for that, not for warehouses or offices." },
     { q: "Do you disclose every chemical?", a: "Yes. A signed Safety Data Sheet is handed to your duty manager before any treatment. The full library is in our chemicals section." },
     { q: "What if we see a pest between visits?", a: "Message us on WhatsApp. A lead technician is on-site within 24 hours — at no cost, as part of the 30-day guarantee." },
     { q: "Will you fit into our FSSAI documentation?", a: "That's the default. Every property gets a quarterly dossier formatted for FSSAI, HACCP and internal audits." },
@@ -543,7 +543,7 @@ function Footer() {
           <span className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground">
             <ShieldCheck className="h-4 w-4" />
           </span>
-          Sentinel
+          Pestr
         </div>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
@@ -551,8 +551,8 @@ function Footer() {
           </a>
           <a href="#docs" className="hover:text-foreground">Sample report</a>
           <a href="#chemicals" className="hover:text-foreground">Chemistry</a>
-          <a href="#" className="hover:text-foreground">Privacy</a>
-          <span>© {new Date().getFullYear()} Sentinel</span>
+          <a href="/privacy" className="hover:text-foreground">Privacy</a>
+          <span>© {new Date().getFullYear()} Pestr</span>
         </div>
       </div>
     </footer>
