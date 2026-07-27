@@ -77,19 +77,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Pestr — Honest Pest Control for Hospitality" },
+      { title: "Pestr — Professional Pest Control For Businesses" },
       { name: "description", content: "Pestr: transparent, food-safe pest management for hotels, restaurants and cloud kitchens. Full chemical disclosure, FSSAI-ready docs, 30-day guarantee." },
-      { property: "og:title", content: "Pestr — Honest Pest Control for Hospitality" },
-      { property: "og:description", content: "Transparent, food-safe pest management for hotels and restaurants. Chemical disclosure. Audit-ready docs. 30-day guarantee." },
+      { property: "og:title", content: "Pestr — Professional Pest Control For Businesses" },
+      { property: "og:description", content: "Pestr: transparent, food-safe pest management for hotels, restaurants and cloud kitchens. Full chemical disclosure, FSSAI-ready docs, 30-day guarantee." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Pestr — Professional Pest Control For Businesses" },
+      { name: "twitter:description", content: "Pestr: transparent, food-safe pest management for hotels, restaurants and cloud kitchens. Full chemical disclosure, FSSAI-ready docs, 30-day guarantee." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/OBiMUoS1UcMIhQExaFAdysarR752/social-images/social-1785145876570-AIC_(8).webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/OBiMUoS1UcMIhQExaFAdysarR752/social-images/social-1785145876570-AIC_(8).webp" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
