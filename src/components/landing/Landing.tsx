@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from "react";
+import pestrLogo from "@/assets/pestr-logo.png.asset.json";
 import {
   ShieldCheck,
   FileText,
