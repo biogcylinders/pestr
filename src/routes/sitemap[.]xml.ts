@@ -1,11 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
+import { services } from "@/data/services";
+import { cities } from "@/data/cities";
+
 const BASE_URL = "https://www.pestr.in";
 
 interface SitemapEntry {
   path: string;
-  changefreq?: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
+  changefreq?:
+    | "always"
+    | "hourly"
+    | "daily"
+    | "weekly"
+    | "monthly"
+    | "yearly"
+    | "never";
   priority?: string;
 }
 
@@ -15,11 +25,7 @@ export const Route = createFileRoute("/sitemap.xml")({
       GET: async () => {
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
-          { path: "/hotel-pest-control", changefreq: "monthly", priority: "0.9" },
-          { path: "/restaurant-pest-control", changefreq: "monthly", priority: "0.9" },
-          { path: "/commercial-kitchen-pest-control", changefreq: "monthly", priority: "0.9" },
-          { path: "/cockroach-control", changefreq: "monthly", priority: "0.85" },
-          { path: "/rodent-control", changefreq: "monthly", priority: "0.85" },
+
           { path: "/services", changefreq: "monthly", priority: "0.9" },
           { path: "/about", changefreq: "monthly", priority: "0.7" },
           { path: "/contact", changefreq: "monthly", priority: "0.6" },
@@ -29,16 +35,43 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/privacy", changefreq: "yearly", priority: "0.3" },
         ];
 
-        const urls = entries.map((e) =>
+        // Add service pages
+        services.forEach((service) => {
+          entries.push({
+            path: `/${service.slug}`,
+            changefreq: "monthly",
+            priority: "0.85",
+          });
+        });
+
+        // Add service + city pages
+        services.forEach((service) => {
+          cities.forEach((city) => {
+            entries.push({
+              path: `/${service.slug}/${city.slug}`,
+              changefreq: "monthly",
+              priority: "0.8",
+            });
+          });
+        });
+
+        // Remove duplicate paths
+        const uniqueEntries = Array.from(
+          new Map(entries.map((e) => [e.path, e])).values()
+        );
+
+        const urls = uniqueEntries.map((e) =>
           [
             `  <url>`,
             `    <loc>${BASE_URL}${e.path}</loc>`,
-            e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
+            e.changefreq
+              ? `    <changefreq>${e.changefreq}</changefreq>`
+              : null,
             e.priority ? `    <priority>${e.priority}</priority>` : null,
             `  </url>`,
           ]
             .filter(Boolean)
-            .join("\n"),
+            .join("\n")
         );
 
         const xml = [
