@@ -9,7 +9,7 @@ export const Route = createFileRoute("/about")({
       { title: "About Pestr — Hospitality-Focused Pest Control" },
       { name: "description", content: "Pestr specializes exclusively in pest management for hotels, restaurants, and commercial kitchens across India." },
     ],
-    links: [{ rel: "canonical", href: "https://pestr.lovable.app/about" }],
+    links: [{ rel: "canonical", href: "https://pestr.in/about" }],
   }),
   component: AboutPage,
 });

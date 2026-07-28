@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pestr.lovable.app/sitemap.xml
+Sitemap: https://pestr.in/sitemap.xml

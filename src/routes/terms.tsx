@@ -7,7 +7,7 @@ export const Route = createFileRoute("/terms")({
       { title: "Terms & Conditions — Pestr" },
       { name: "description", content: "Terms and conditions for using Pestr's pest control services and platform." },
     ],
-    links: [{ rel: "canonical", href: "https://pestr.lovable.app/terms" }],
+    links: [{ rel: "canonical", href: "https://pestr.in/terms" }],
   }),
   component: TermsPage,
 });

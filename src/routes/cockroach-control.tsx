@@ -21,10 +21,10 @@ export const Route = createFileRoute("/cockroach-control")({
         content:
           "Cockroach control service for hospitality businesses with transparent treatment plans, documentation and quick follow-up.",
       },
-      { property: "og:url", content: "https://pestr.lovable.app/cockroach-control" },
+      { property: "og:url", content: "https://pestr.in/cockroach-control" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://pestr.lovable.app/cockroach-control" }],
+    links: [{ rel: "canonical", href: "https://pestr.in/cockroach-control" }],
     scripts: [
       {
         type: "application/ld+json",

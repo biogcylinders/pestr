@@ -21,10 +21,10 @@ export const Route = createFileRoute("/restaurant-pest-control")({
         content:
           "Restaurant pest control with documented inspection, clear chemistry and faster response for high-risk food-service environments.",
       },
-      { property: "og:url", content: "https://pestr.lovable.app/restaurant-pest-control" },
+      { property: "og:url", content: "https://pestr.in/restaurant-pest-control" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://pestr.lovable.app/restaurant-pest-control" }],
+    links: [{ rel: "canonical", href: "https://pestr.in/restaurant-pest-control" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -36,7 +36,7 @@ export const Route = createFileRoute("/restaurant-pest-control")({
           provider: {
             "@type": "Organization",
             name: "Pestr",
-            url: "https://pestr.lovable.app",
+            url: "https://pestr.in",
             telephone: "+91-9648116960",
           },
           areaServed: "IN",

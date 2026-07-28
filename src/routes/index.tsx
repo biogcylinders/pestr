@@ -16,10 +16,10 @@ export const Route = createFileRoute("/")({
         content:
           "Simple, honest pest management for hospitality — full chemical disclosure, FSSAI-ready documentation, and a written 30-day guarantee.",
       },
-      { property: "og:url", content: "https://pestr.lovable.app/" },
+      { property: "og:url", content: "https://pestr.in/" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://pestr.lovable.app/" }],
+    links: [{ rel: "canonical", href: "https://pestr.in/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -30,7 +30,7 @@ export const Route = createFileRoute("/")({
           provider: {
             "@type": "Organization",
             name: "Pestr",
-            url: "https://pestr.lovable.app",
+            url: "https://pestr.in",
             telephone: "+91-9648116960",
           },
           areaServed: "IN",

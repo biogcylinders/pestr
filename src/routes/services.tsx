@@ -11,7 +11,7 @@ export const Route = createFileRoute("/services")({
       { title: "Services — Pest Control For Hospitality | Pestr" },
       { name: "description", content: "Pest management for hotels, restaurants, commercial kitchens, and cloud kitchens. Food-safe, audit-ready, 30-day guarantee." },
     ],
-    links: [{ rel: "canonical", href: "https://pestr.lovable.app/services" }],
+    links: [{ rel: "canonical", href: "https://pestr.in/services" }],
   }),
   component: ServicesPage,
 });

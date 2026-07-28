@@ -9,7 +9,7 @@ export const Route = createFileRoute("/pricing")({
       { title: "Pricing — Pestr Hospitality Pest Control" },
       { name: "description", content: "Transparent pest control pricing for hotels, restaurants and kitchens. Free site inspection, no hidden fees." },
     ],
-    links: [{ rel: "canonical", href: "https://pestr.lovable.app/pricing" }],
+    links: [{ rel: "canonical", href: "https://pestr.in/pricing" }],
   }),
   component: PricingPage,
 });

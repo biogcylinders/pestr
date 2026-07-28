@@ -21,10 +21,10 @@ export const Route = createFileRoute("/hotel-pest-control")({
         content:
           "Hospitality-focused hotel pest control with transparent treatment notes, chemical disclosure and a written 30-day guarantee.",
       },
-      { property: "og:url", content: "https://pestr.lovable.app/hotel-pest-control" },
+      { property: "og:url", content: "https://pestr.in/hotel-pest-control" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://pestr.lovable.app/hotel-pest-control" }],
+    links: [{ rel: "canonical", href: "https://pestr.in/hotel-pest-control" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -36,7 +36,7 @@ export const Route = createFileRoute("/hotel-pest-control")({
           provider: {
             "@type": "Organization",
             name: "Pestr",
-            url: "https://pestr.lovable.app",
+            url: "https://pestr.in",
             telephone: "+91-9648116960",
           },
           areaServed: "IN",

@@ -21,10 +21,10 @@ export const Route = createFileRoute("/commercial-kitchen-pest-control")({
         content:
           "Commercial kitchen pest control built for busy food businesses that need reliable prevention and audit-ready records.",
       },
-      { property: "og:url", content: "https://pestr.lovable.app/commercial-kitchen-pest-control" },
+      { property: "og:url", content: "https://pestr.in/commercial-kitchen-pest-control" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://pestr.lovable.app/commercial-kitchen-pest-control" }],
+    links: [{ rel: "canonical", href: "https://pestr.in/commercial-kitchen-pest-control" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -36,7 +36,7 @@ export const Route = createFileRoute("/commercial-kitchen-pest-control")({
           provider: {
             "@type": "Organization",
             name: "Pestr",
-            url: "https://pestr.lovable.app",
+            url: "https://pestr.in",
             telephone: "+91-9648116960",
           },
           areaServed: "IN",
