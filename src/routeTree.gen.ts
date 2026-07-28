@@ -24,6 +24,8 @@ import { Route as RodentControlRouteImport } from './routes/rodent-control'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ServiceCityRouteImport } from './routes/$service/$city'
+import { Route as PestControlCityRouteImport } from './routes/pest-control/$city'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -101,6 +103,16 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServiceCityRoute = ServiceCityRouteImport.update({
+  id: '/$service/$city',
+  path: '/$service/$city',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PestControlCityRoute = PestControlCityRouteImport.update({
+  id: '/pest-control/$city',
+  path: '/pest-control/$city',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -118,6 +130,8 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/$service/$city': typeof ServiceCityRoute
+  '/pest-control/$city': typeof PestControlCityRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -135,6 +149,8 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/$service/$city': typeof ServiceCityRoute
+  '/pest-control/$city': typeof PestControlCityRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -153,6 +169,8 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/$service/$city': typeof ServiceCityRoute
+  '/pest-control/$city': typeof PestControlCityRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -172,6 +190,8 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/terms'
+    | '/$service/$city'
+    | '/pest-control/$city'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -189,6 +209,8 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/terms'
+    | '/$service/$city'
+    | '/pest-control/$city'
   id:
     | '__root__'
     | '/'
@@ -206,6 +228,8 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/terms'
+    | '/$service/$city'
+    | '/pest-control/$city'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -224,6 +248,8 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
+  ServiceCityRoute: typeof ServiceCityRoute
+  PestControlCityRoute: typeof PestControlCityRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -333,6 +359,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$service/$city': {
+      id: '/$service/$city'
+      path: '/$service/$city'
+      fullPath: '/$service/$city'
+      preLoaderRoute: typeof ServiceCityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pest-control/$city': {
+      id: '/pest-control/$city'
+      path: '/pest-control/$city'
+      fullPath: '/pest-control/$city'
+      preLoaderRoute: typeof PestControlCityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -352,6 +392,8 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
+  ServiceCityRoute: ServiceCityRoute,
+  PestControlCityRoute: PestControlCityRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import ServicePageLayout from "@/components/seo/ServicePageLayout";
 import { getWhatsAppLink, TEL_LINK, WA_FORMATTED } from "@/lib/constants";
+import { services as serviceData } from "@/data/services";
 import { CheckCircle2, ArrowRight, MessageCircle, Phone } from "lucide-react";
 import { Hotel, ChefHat, Building2, Bug, Rat } from "lucide-react";
 
@@ -16,82 +17,112 @@ export const Route = createFileRoute("/services")({
   component: ServicesPage,
 });
 
-const serviceList = [
-  {
-    id: "hotel",
-    title: "Hotel & Resort Pest Control",
-    icon: Hotel,
-    description: "Discrete, zero-disruption pest management for guest rooms, dining halls, and back-of-house storage.",
-    features: [
-      "Off-peak night & early morning treatments",
-      "Odorless, food-safe gel applications",
-      "Guest-facing area protection protocol",
-      "Quarterly FSSAI audit file preparation",
-    ],
-    link: "/hotel-pest-control",
-  },
-  {
-    id: "restaurant",
-    title: "Restaurant & Cafe Protection",
-    icon: ChefHat,
-    description: "Targeted pest barrier protection for dining rooms, bars, and food prep areas.",
-    features: [
-      "Zero airborne chemical exposure in kitchen",
-      "Fly control & drain treatment protocols",
-      "Signed visit report for hygiene inspections",
-      "24-hour emergency outbreak response",
-    ],
-    link: "/restaurant-pest-control",
-  },
-  {
-    id: "kitchen",
-    title: "Commercial Kitchen Control",
-    icon: Building2,
-    description: "Specialized grease-trap, drain, and equipment void pest control for heavy-duty food production.",
-    features: [
-      "HACCP & FSSAI compliant formulations",
-      "Bait station mapping & void sealing",
-      "Full Safety Data Sheet (SDS) dossier",
-      "Monthly inspection with photo documentation",
-    ],
-    link: "/commercial-kitchen-pest-control",
-  },
-  {
-    id: "cockroach",
-    title: "Cockroach Eradication",
-    icon: Bug,
-    description: "Gel baiting and growth regulator treatments that eliminate cockroach nests without closing your kitchen.",
-    features: [
-      "Imidacloprid 2.15% targeted gel matrix",
-      "Zero downtime — kitchen stays operational",
-      "Eliminates German & American cockroaches",
-      "30-day written retreat guarantee",
-    ],
-    link: "/cockroach-control",
-  },
-  {
-    id: "rodent",
-    title: "Rodent Prevention",
-    icon: Rat,
-    description: "Tamper-resistant bait stations, tracking, and perimeter sealing to keep rats & mice out permanently.",
-    features: [
-      "Tamper-proof lockable bait stations",
-      "Entry point identification & gap sealing",
-      "Non-toxic trapping for food zones",
-      "Weekly monitoring during high activity",
-    ],
-    link: "/rodent-control",
-  },
-];
+const serviceList = serviceData.map((service) => {
+  const config = {
+    "hotel-pest-control": {
+      id: "hotel-pest-control",
+      title: "Hotel & Resort Pest Control",
+      icon: Hotel,
+      description: "Discrete, zero-disruption pest management for guest rooms, dining halls, and back-of-house storage.",
+      features: [
+        "Off-peak night & early morning treatments",
+        "Odorless, food-safe gel applications",
+        "Guest-facing area protection protocol",
+        "Quarterly FSSAI audit file preparation",
+      ],
+    },
+    "restaurant-pest-control": {
+      id: "restaurant-pest-control",
+      title: "Restaurant & Cafe Protection",
+      icon: ChefHat,
+      description: "Targeted pest barrier protection for dining rooms, bars, and food prep areas.",
+      features: [
+        "Zero airborne chemical exposure in kitchen",
+        "Fly control & drain treatment protocols",
+        "Signed visit report for hygiene inspections",
+        "24-hour emergency outbreak response",
+      ],
+    },
+    "commercial-kitchen-pest-control": {
+      id: "commercial-kitchen-pest-control",
+      title: "Commercial Kitchen Control",
+      icon: Building2,
+      description: "Specialized grease-trap, drain, and equipment void pest control for heavy-duty food production.",
+      features: [
+        "HACCP & FSSAI compliant formulations",
+        "Bait station mapping & void sealing",
+        "Full Safety Data Sheet (SDS) dossier",
+        "Monthly inspection with photo documentation",
+      ],
+    },
+    "cockroach-control": {
+      id: "cockroach-control",
+      title: "Cockroach Eradication",
+      icon: Bug,
+      description: "Gel baiting and growth regulator treatments that eliminate cockroach nests without closing your kitchen.",
+      features: [
+        "Imidacloprid 2.15% targeted gel matrix",
+        "Zero downtime — kitchen stays operational",
+        "Eliminates German & American cockroaches",
+        "30-day written retreat guarantee",
+      ],
+    },
+    "rodent-control": {
+      id: "rodent-control",
+      title: "Rodent Prevention",
+      icon: Rat,
+      description: "Tamper-resistant bait stations, tracking, and perimeter sealing to keep rats & mice out permanently.",
+      features: [
+        "Tamper-proof lockable bait stations",
+        "Entry point identification & gap sealing",
+        "Non-toxic trapping for food zones",
+        "Weekly monitoring during high activity",
+      ],
+    },
+    "termite-treatment": {
+      id: "termite-treatment",
+      title: "Termite Treatment",
+      icon: Bug,
+      description: "Soil treatment and baiting systems that protect your property from structural damage caused by termites.",
+      features: [
+        "Subterranean termite soil treatment",
+        "Baiting system with monitoring stations",
+        "Pre-construction termite barrier options",
+        "Annual inspection & maintenance plan",
+      ],
+    },
+    "mosquito-control": {
+      id: "mosquito-control",
+      title: "Mosquito Control",
+      icon: Bug,
+      description: "Targeted larvicide and adulticide treatments to reduce mosquito populations around your property.",
+      features: [
+        "Larvicide treatments for breeding sites",
+        "Adulticide treatments for mosquito populations",
+        "Pre-construction mosquito barrier options",
+        "Annual inspection & maintenance plan",
+      ]
+    },
+    
+    
+
+
+  }[service.slug as keyof typeof config];
+
+  return {
+    ...config,
+    link: `/${service.slug}/${service.defaultCity}`,
+  };
+});
 
 function ServicesContent() {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   const filteredServices = serviceList.filter((s) => {
     if (selectedCategory === "all") return true;
-    if (selectedCategory === "hospitality") return s.id === "hotel" || s.id === "restaurant";
-    if (selectedCategory === "kitchen") return s.id === "kitchen";
-    if (selectedCategory === "pests") return s.id === "cockroach" || s.id === "rodent";
+    if (selectedCategory === "hospitality") return s.id === "hotel-pest-control" || s.id === "restaurant-pest-control";
+    if (selectedCategory === "kitchen") return s.id === "commercial-kitchen-pest-control";
+    if (selectedCategory === "pests") return s.id === "cockroach-control" || s.id === "rodent-control";
     return true;
   });
 

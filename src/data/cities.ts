@@ -1,0 +1,58 @@
+export const cities = [
+  {
+    slug: "varanasi",
+    name: "Varanasi",
+    state: "Uttar Pradesh",
+    nearby: ["Sigra", "Lanka", "Bhelupur"],
+    pests: ["Cockroaches", "Termites", "Mosquitoes", "Rodents"],
+  },
+  {
+    slug: "delhi",
+    name: "Delhi",
+    state: "Delhi",
+    nearby: ["Rohini", "Dwarka", "Saket"],
+    pests: ["Cockroaches", "Termites", "Mosquitoes", "Rodents"],
+  },
+  {
+    slug: "mumbai",
+    name: "Mumbai",
+    state: "Maharashtra",
+    nearby: ["Andheri", "Bandra", "Powai"],
+    pests: ["Cockroaches", "Termites", "Mosquitoes", "Rodents"],
+  },
+  {
+    slug: "bangalore",
+    name: "Bengaluru",
+    state: "Karnataka",
+    nearby: ["Indiranagar", "Koramangala", "Jayanagar"],
+    pests: ["Cockroaches", "Termites", "Mosquitoes", "Rodents"],
+  },
+  {
+    slug: "hyderabad",
+    name: "Hyderabad",
+    state: "Telangana",
+    nearby: ["HITEC City", "Gachibowli", "Banjara Hills"],
+    pests: ["Cockroaches", "Termites", "Mosquitoes", "Rodents"],
+  },
+  {
+    slug: "chennai",
+    name: "Chennai",
+    state: "Tamil Nadu",
+    nearby: ["Velachery", "Anna Nagar", "Adyar"],
+    pests: ["Cockroaches", "Termites", "Mosquitoes", "Rodents"],
+  },
+  {
+    slug: "pune",
+    name: "Pune",
+    state: "Maharashtra",
+    nearby: ["Hinjawadi", "Kharadi", "Baner"],
+    pests: ["Cockroaches", "Termites", "Mosquitoes", "Rodents"],
+  },
+  {
+    slug: "lucknow",
+    name: "Lucknow",
+    state: "Uttar Pradesh",
+    nearby: ["Gomti Nagar", "Hazratganj", "Aliganj"],
+    pests: ["Cockroaches", "Termites", "Mosquitoes", "Rodents"],
+  },
+];

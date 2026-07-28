@@ -10,6 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import naviconUrl from "../assets/navicon.png?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -89,6 +90,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/OBiMUoS1UcMIhQExaFAdysarR752/social-images/social-1785145876570-AIC_(8).webp" },
     ],
     links: [
+      {
+        rel: "icon",
+        href: naviconUrl,
+        type: "image/png",
+      },
       {
         rel: "stylesheet",
         href: appCss,
