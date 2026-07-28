@@ -86,11 +86,8 @@ function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
-        <a href="#" className="flex items-center gap-2 font-semibold">
-          <span className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground">
-            <ShieldCheck className="h-4 w-4" />
-          </span>
-          <span className="text-base">Pestr</span>
+        <a href="#" className="flex items-center font-semibold" aria-label="Pestr">
+          <img src={pestrLogo.url} alt="Pestr" className="h-7 w-auto" />
         </a>
         <div className="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
           <a href="#why" className="hover:text-foreground">Why us</a>
@@ -297,7 +294,7 @@ function Guarantee() {
               <BadgeCheck className="h-3.5 w-3.5" /> 30-day guarantee
             </div>
             <h2 className="mt-5 text-3xl font-semibold leading-tight md:text-4xl">
-              If pest activity returns within 30 days, we'll revisit the affected area within 24 hours at no additional cost.
+              See a pest within 30 days? We're back in 24 hours — free.
             </h2>
             <p className="mt-4 max-w-xl text-primary-foreground/80">
               It's in writing on every contract. No callout fee, no arguments, no fine print. That's the whole promise.
@@ -553,11 +550,8 @@ function Footer() {
   return (
     <footer className="border-t border-border bg-card py-10 text-sm">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 md:flex-row md:items-center md:justify-between">
-        <div className="flex items-center gap-2 font-semibold">
-          <span className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground">
-            <ShieldCheck className="h-4 w-4" />
-          </span>
-          Pestr
+        <div className="flex items-center font-semibold">
+          <img src={pestrLogo.url} alt="Pestr" className="h-7 w-auto" />
         </div>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
