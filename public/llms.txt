@@ -1,0 +1,10 @@
+# Pestr
+
+> Professional pest control for hotels, restaurants, and commercial kitchens in India — full chemical disclosure, FSSAI/HACCP-ready documentation, and a written 30-day guarantee.
+
+Pestr is a hospitality-focused pest management service. Every visit is documented, every chemical disclosed with a Safety Data Sheet, and every property gets a quarterly audit dossier formatted for FSSAI and HACCP. Contact via WhatsApp at +91 9648116960.
+
+## Pages
+
+- [Home](/): Services, chemical transparency, documentation, guarantee, comparison vs traditional vendors, and FAQ.
+- [Privacy Policy](/privacy): How Pestr collects, uses and protects your information.
