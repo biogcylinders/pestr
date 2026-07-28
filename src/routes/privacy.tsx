@@ -5,7 +5,14 @@ export const Route = createFileRoute("/privacy")({
     meta: [
       { title: "Privacy Policy — Pestr" },
       { name: "description", content: "How Pestr collects, uses and protects your information." },
+      { property: "og:title", content: "Privacy Policy — Pestr" },
+      { property: "og:description", content: "How Pestr collects, uses and protects your customer and service data." },
+      { property: "og:url", content: "https://pestr.lovable.app/privacy" },
+      { property: "og:type", content: "article" },
+      { name: "twitter:title", content: "Privacy Policy — Pestr" },
+      { name: "twitter:description", content: "How Pestr collects, uses and protects your customer and service data." },
     ],
+    links: [{ rel: "canonical", href: "https://pestr.lovable.app/privacy" }],
   }),
   component: PrivacyPage,
 });
