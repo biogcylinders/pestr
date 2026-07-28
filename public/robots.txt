@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pestr.lovable.app/sitemap.xml
