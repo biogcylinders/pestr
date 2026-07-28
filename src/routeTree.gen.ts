@@ -9,13 +9,66 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as CareersRouteImport } from './routes/careers'
+import { Route as CockroachControlRouteImport } from './routes/cockroach-control'
+import { Route as CommercialKitchenPestControlRouteImport } from './routes/commercial-kitchen-pest-control'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as HotelPestControlRouteImport } from './routes/hotel-pest-control'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as RestaurantPestControlRouteImport } from './routes/restaurant-pest-control'
+import { Route as RodentControlRouteImport } from './routes/rodent-control'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as TermsRouteImport } from './routes/terms'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CockroachControlRoute = CockroachControlRouteImport.update({
+  id: '/cockroach-control',
+  path: '/cockroach-control',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommercialKitchenPestControlRoute =
+  CommercialKitchenPestControlRouteImport.update({
+    id: '/commercial-kitchen-pest-control',
+    path: '/commercial-kitchen-pest-control',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HotelPestControlRoute = HotelPestControlRouteImport.update({
+  id: '/hotel-pest-control',
+  path: '/hotel-pest-control',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -23,49 +76,219 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const RestaurantPestControlRoute = RestaurantPestControlRouteImport.update({
+  id: '/restaurant-pest-control',
+  path: '/restaurant-pest-control',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RodentControlRoute = RodentControlRouteImport.update({
+  id: '/rodent-control',
+  path: '/rodent-control',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
+  '/cockroach-control': typeof CockroachControlRoute
+  '/commercial-kitchen-pest-control': typeof CommercialKitchenPestControlRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/hotel-pest-control': typeof HotelPestControlRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/restaurant-pest-control': typeof RestaurantPestControlRoute
+  '/rodent-control': typeof RodentControlRoute
+  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
+  '/cockroach-control': typeof CockroachControlRoute
+  '/commercial-kitchen-pest-control': typeof CommercialKitchenPestControlRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/hotel-pest-control': typeof HotelPestControlRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/restaurant-pest-control': typeof RestaurantPestControlRoute
+  '/rodent-control': typeof RodentControlRoute
+  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
+  '/cockroach-control': typeof CockroachControlRoute
+  '/commercial-kitchen-pest-control': typeof CommercialKitchenPestControlRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/hotel-pest-control': typeof HotelPestControlRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/restaurant-pest-control': typeof RestaurantPestControlRoute
+  '/rodent-control': typeof RodentControlRoute
+  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/privacy' | '/sitemap.xml'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/careers'
+    | '/cockroach-control'
+    | '/commercial-kitchen-pest-control'
+    | '/contact'
+    | '/faq'
+    | '/hotel-pest-control'
+    | '/pricing'
+    | '/privacy'
+    | '/restaurant-pest-control'
+    | '/rodent-control'
+    | '/services'
+    | '/sitemap.xml'
+    | '/terms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/privacy' | '/sitemap.xml'
-  id: '__root__' | '/' | '/privacy' | '/sitemap.xml'
+  to:
+    | '/'
+    | '/about'
+    | '/careers'
+    | '/cockroach-control'
+    | '/commercial-kitchen-pest-control'
+    | '/contact'
+    | '/faq'
+    | '/hotel-pest-control'
+    | '/pricing'
+    | '/privacy'
+    | '/restaurant-pest-control'
+    | '/rodent-control'
+    | '/services'
+    | '/sitemap.xml'
+    | '/terms'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/careers'
+    | '/cockroach-control'
+    | '/commercial-kitchen-pest-control'
+    | '/contact'
+    | '/faq'
+    | '/hotel-pest-control'
+    | '/pricing'
+    | '/privacy'
+    | '/restaurant-pest-control'
+    | '/rodent-control'
+    | '/services'
+    | '/sitemap.xml'
+    | '/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  CareersRoute: typeof CareersRoute
+  CockroachControlRoute: typeof CockroachControlRoute
+  CommercialKitchenPestControlRoute: typeof CommercialKitchenPestControlRoute
+  ContactRoute: typeof ContactRoute
+  FaqRoute: typeof FaqRoute
+  HotelPestControlRoute: typeof HotelPestControlRoute
+  PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
+  RestaurantPestControlRoute: typeof RestaurantPestControlRoute
+  RodentControlRoute: typeof RodentControlRoute
+  ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TermsRoute: typeof TermsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cockroach-control': {
+      id: '/cockroach-control'
+      path: '/cockroach-control'
+      fullPath: '/cockroach-control'
+      preLoaderRoute: typeof CockroachControlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/commercial-kitchen-pest-control': {
+      id: '/commercial-kitchen-pest-control'
+      path: '/commercial-kitchen-pest-control'
+      fullPath: '/commercial-kitchen-pest-control'
+      preLoaderRoute: typeof CommercialKitchenPestControlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hotel-pest-control': {
+      id: '/hotel-pest-control'
+      path: '/hotel-pest-control'
+      fullPath: '/hotel-pest-control'
+      preLoaderRoute: typeof HotelPestControlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -75,11 +298,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/restaurant-pest-control': {
+      id: '/restaurant-pest-control'
+      path: '/restaurant-pest-control'
+      fullPath: '/restaurant-pest-control'
+      preLoaderRoute: typeof RestaurantPestControlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rodent-control': {
+      id: '/rodent-control'
+      path: '/rodent-control'
+      fullPath: '/rodent-control'
+      preLoaderRoute: typeof RodentControlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -87,9 +338,31 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  CareersRoute: CareersRoute,
+  CockroachControlRoute: CockroachControlRoute,
+  CommercialKitchenPestControlRoute: CommercialKitchenPestControlRoute,
+  ContactRoute: ContactRoute,
+  FaqRoute: FaqRoute,
+  HotelPestControlRoute: HotelPestControlRoute,
+  PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
+  RestaurantPestControlRoute: RestaurantPestControlRoute,
+  RodentControlRoute: RodentControlRoute,
+  ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

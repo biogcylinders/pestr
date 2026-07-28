@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from "react";
-import pestrLogo from "@/assets/pestr-logo.png.asset.json";
+import { Link } from "@tanstack/react-router";
+import Logo from "@/components/ui/logo";
 import {
   ShieldCheck,
   FileText,
@@ -19,9 +20,9 @@ import {
   Download,
   Phone,
 } from "lucide-react";
+import { getWhatsAppLink, TEL_LINK, WA_FORMATTED, WA_NUMBER } from "@/lib/constants";
 
-const WA_NUMBER = "9648116960";
-const WA_LINK = `https://wa.me/91${WA_NUMBER}?text=${encodeURIComponent("Hi, I'd like a pest-control quote for my property.")}`;
+const WA_LINK = getWhatsAppLink();
 
 function WhatsAppButton({
   children = "Chat on WhatsApp",
@@ -85,18 +86,18 @@ function Section({
 
 function Nav() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
-        <a href="#" className="flex items-center font-semibold" aria-label="Pestr">
-          <img src={pestrLogo.url} alt="Pestr" className="h-7 w-auto" />
-        </a>
-        <div className="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
-          <a href="#why" className="hover:text-foreground">Why us</a>
-          <a href="#chemicals" className="hover:text-foreground">Chemicals</a>
-          <a href="#docs" className="hover:text-foreground">Docs</a>
-          <a href="#guarantee" className="hover:text-foreground">Guarantee</a>
-          <a href="#pricing" className="hover:text-foreground">Pricing</a>
-          <a href="#faq" className="hover:text-foreground">FAQ</a>
+    <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur-sm">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 h-14 md:h-16">
+        <Link to="/" className="flex items-center font-semibold" aria-label="Pestr Home">
+          <Logo />
+        </Link>
+        <div className="hidden items-center gap-7 text-sm font-medium text-muted-foreground md:flex">
+          <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+          <Link to="/services" className="hover:text-foreground transition-colors">Services</Link>
+          <Link to="/pricing" className="hover:text-foreground transition-colors">Pricing</Link>
+          <Link to="/faq" className="hover:text-foreground transition-colors">FAQ</Link>
+          <Link to="/about" className="hover:text-foreground transition-colors">About</Link>
+          <Link to="/contact" className="hover:text-foreground transition-colors">Contact</Link>
         </div>
         <WhatsAppButton variant="primary" className="px-4 py-2 text-xs">
           WhatsApp us
@@ -116,20 +117,20 @@ function Hero() {
             Now serving 240+ properties across India
           </div>
           <h1 className="mt-6 text-4xl font-semibold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
-            Reliable pest management <span className="text-brass">for hospitality.</span>
+            Trusted pest control for <span className="text-brass">hotels, restaurants and kitchens.</span>
           </h1>
           <p className="mt-5 max-w-lg text-lg text-muted-foreground">
-            Designed for hotels, restaurants and commercial kitchens—with complete treatment transparency, audit-ready documentation, and a written 30-day service guarantee.
+            We protect guest experience, food safety and compliance with clear treatment plans, documented visits and a written 30-day guarantee for hospitality properties.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <WhatsAppButton variant="primary" className="px-6 py-3 text-base">
-              Get a quote on WhatsApp
+              Book a free site inspection
             </WhatsAppButton>
             <a
               href="#docs"
               className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground hover:border-brass"
             >
-              <Download className="h-4 w-4" /> Sample report
+              <Download className="h-4 w-4" /> View sample report
             </a>
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
@@ -303,10 +304,10 @@ function Guarantee() {
             <div className="mt-6 flex flex-wrap gap-3">
               <WhatsAppButton variant="accent">Ask about the guarantee</WhatsAppButton>
               <a
-                href={`tel:+91${WA_NUMBER}`}
+                href={TEL_LINK}
                 className="inline-flex items-center gap-2 rounded-lg border border-primary-foreground/30 px-5 py-3 text-sm hover:border-brass"
               >
-                <Phone className="h-4 w-4" /> +91 {WA_NUMBER}
+                <Phone className="h-4 w-4" /> {WA_FORMATTED}
               </a>
             </div>
           </div>
@@ -455,10 +456,10 @@ function Pricing() {
             <div className="mt-6 flex flex-wrap gap-3">
               <WhatsAppButton variant="primary">Build my custom plan</WhatsAppButton>
               <a
-                href={`tel:+91${WA_NUMBER}`}
+                href={TEL_LINK}
                 className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-3 text-sm font-medium hover:border-brass"
               >
-                <Phone className="h-4 w-4" /> +91 {WA_NUMBER}
+                <Phone className="h-4 w-4" /> {WA_FORMATTED}
               </a>
             </div>
           </div>
@@ -499,19 +500,29 @@ function FAQ() {
       <div className="divide-y divide-border overflow-hidden rounded-xl border border-border bg-card">
         {items.map((it, i) => {
           const isOpen = i === open;
+          const panelId = `faq-panel-${i}`;
+          const buttonId = `faq-btn-${i}`;
           return (
             <div key={it.q}>
               <button
+                id={buttonId}
+                aria-expanded={isOpen}
+                aria-controls={panelId}
                 onClick={() => setOpen(isOpen ? -1 : i)}
-                className="flex w-full items-center justify-between gap-6 px-5 py-4 text-left hover:bg-muted/50"
+                className="flex w-full items-center justify-between gap-6 px-5 py-4 text-left hover:bg-muted/50 transition-colors"
               >
                 <span className="text-base font-medium">{it.q}</span>
                 <ChevronDown
-                  className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform ${isOpen ? "rotate-180" : ""}`}
+                  className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
                 />
               </button>
               {isOpen && (
-                <div className="px-5 pb-5 pr-10 text-sm leading-relaxed text-muted-foreground">
+                <div
+                  id={panelId}
+                  role="region"
+                  aria-labelledby={buttonId}
+                  className="px-5 pb-5 pr-10 text-sm leading-relaxed text-muted-foreground"
+                >
                   {it.a}
                 </div>
               )}
@@ -536,7 +547,7 @@ function FinalCTA() {
             WhatsApp {WA_NUMBER}
           </WhatsAppButton>
           <a
-            href={`tel:+91${WA_NUMBER}`}
+            href={TEL_LINK}
             className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-medium hover:border-brass"
           >
             <Phone className="h-4 w-4" /> Call us
@@ -552,7 +563,7 @@ function Footer() {
     <footer className="border-t border-border bg-card py-10 text-sm">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center font-semibold">
-          <img src={pestrLogo.url} alt="Pestr" className="h-7 w-auto" />
+          <Logo />
         </div>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
@@ -560,7 +571,13 @@ function Footer() {
           </a>
           <a href="#docs" className="hover:text-foreground">Sample report</a>
           <a href="#chemicals" className="hover:text-foreground">Chemistry</a>
-          <a href="/privacy" className="hover:text-foreground">Privacy</a>
+          <Link to="/hotel-pest-control" className="hover:text-foreground">Hotel pest control</Link>
+          <Link to="/restaurant-pest-control" className="hover:text-foreground">Restaurant pest control</Link>
+          <Link to="/commercial-kitchen-pest-control" className="hover:text-foreground">Commercial kitchen pest control</Link>
+          <Link to="/cockroach-control" className="hover:text-foreground">Cockroach control</Link>
+          <Link to="/rodent-control" className="hover:text-foreground">Rodent control</Link>
+          <Link to="/privacy" className="hover:text-foreground">Privacy</Link>
+          <Link to="/terms" className="hover:text-foreground">Terms</Link>
           <span>© {new Date().getFullYear()} Pestr</span>
         </div>
       </div>
@@ -575,7 +592,7 @@ function FloatingWA() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-brass px-4 py-3 text-sm font-medium text-primary-foreground shadow-lg hover:brightness-95"
+      className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-brass px-4 py-3 text-sm font-medium text-primary-foreground shadow-lg hover:brightness-95 transition-transform hover:scale-105"
     >
       <MessageCircle className="h-4 w-4" /> WhatsApp
     </a>
