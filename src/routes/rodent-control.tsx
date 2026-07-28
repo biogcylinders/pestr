@@ -21,10 +21,10 @@ export const Route = createFileRoute("/rodent-control")({
         content:
           "Rodent control service with inspection, monitoring and documented follow-up for hospitality and food businesses.",
       },
-      { property: "og:url", content: "https://pestr.in/rodent-control" },
+      { property: "og:url", content: "https://www.pestr.in/rodent-control" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://pestr.in/rodent-control" }],
+    links: [{ rel: "canonical", href: "https://www.pestr.in/rodent-control" }],
     scripts: [
       {
         type: "application/ld+json",

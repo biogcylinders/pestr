@@ -9,4 +9,4 @@ export const getWhatsAppLink = (text: string = WA_DEFAULT_TEXT): string => {
 export const TEL_LINK = `tel:+91${WA_NUMBER}`;
 
 export const COMPANY_NAME = "Pestr";
-export const SITE_URL = "https://pestr.in";
+export const SITE_URL = "https://www.pestr.in";

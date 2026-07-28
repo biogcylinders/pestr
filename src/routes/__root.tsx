@@ -109,7 +109,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             {
               "@type": "Organization",
               name: "Pestr",
-              url: "https://pestr.in",
+              url: "https://www.pestr.in",
               contactPoint: {
                 "@type": "ContactPoint",
                 telephone: "+91-9648116960",
@@ -121,7 +121,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             {
               "@type": "WebSite",
               name: "Pestr",
-              url: "https://pestr.in",
+              url: "https://www.pestr.in",
             },
           ],
         }),

@@ -7,7 +7,7 @@ export const Route = createFileRoute("/careers")({
       { title: "Careers at Pestr" },
       { name: "description", content: "Join Pestr — career opportunities in field operations, hospitality-focused pest control and customer success." },
     ],
-    links: [{ rel: "canonical", href: "https://pestr.in/careers" }],
+    links: [{ rel: "canonical", href: "https://www.pestr.in/careers" }],
   }),
   component: CareersPage,
 });

@@ -10,7 +10,7 @@ export const Route = createFileRoute("/contact")({
       { title: "Contact Pestr — Book a Free Site Inspection" },
       { name: "description", content: "Contact Pestr for a complimentary site inspection and a tailored pest-control plan for your hospitality property." },
     ],
-    links: [{ rel: "canonical", href: "https://pestr.in/contact" }],
+    links: [{ rel: "canonical", href: "https://www.pestr.in/contact" }],
   }),
   component: ContactPage,
 });

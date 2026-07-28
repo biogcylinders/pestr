@@ -10,7 +10,7 @@ export const Route = createFileRoute("/faq")({
       { title: "FAQ — Frequently Asked Questions | Pestr" },
       { name: "description", content: "Answers to common questions about Pestr hospitality pest control, food-safe chemistry, FSSAI compliance, and the 30-day guarantee." },
     ],
-    links: [{ rel: "canonical", href: "https://pestr.in/faq" }],
+    links: [{ rel: "canonical", href: "https://www.pestr.in/faq" }],
   }),
   component: FAQPage,
 });
