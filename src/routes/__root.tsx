@@ -1,4 +1,4 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
@@ -7,11 +7,12 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect } from "react";
 
 import appCss from "../styles.css?url";
 import naviconUrl from "../assets/navicon.png?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { cities } from "@/data/cities";
 
 function NotFoundComponent() {
   return (
@@ -83,84 +84,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Pestr — Professional Pest Control For Businesses" },
       { property: "og:description", content: "Pestr: transparent, food-safe pest management for hotels, restaurants and cloud kitchens. Full chemical disclosure, FSSAI-ready docs, 30-day guarantee." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Pestr — Professional Pest Control For Businesses" },
-      { name: "twitter:description", content: "Pestr: transparent, food-safe pest management for hotels, restaurants and cloud kitchens. Full chemical disclosure, FSSAI-ready docs, 30-day guarantee." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/OBiMUoS1UcMIhQExaFAdysarR752/social-images/social-1785145876570-AIC_(8).webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/OBiMUoS1UcMIhQExaFAdysarR752/social-images/social-1785145876570-AIC_(8).webp" },
     ],
     links: [
-      {
-        rel: "icon",
-        href: naviconUrl,
-        type: "image/png",
-      },
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap",
-      },
-    ],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Organization",
-              name: "Pestr",
-              url: "https://www.pestr.in",
-              contactPoint: {
-                "@type": "ContactPoint",
-                telephone: "+91-9648116960",
-                contactType: "customer service",
-                areaServed: "IN",
-                availableLanguage: ["en", "hi"],
-              },
-            },
-            {
-              "@type": "WebSite",
-              name: "Pestr",
-              url: "https://www.pestr.in",
-            },
-          ],
-        }),
-      },
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: naviconUrl },
     ],
   }),
-  shellComponent: RootShell,
-  component: RootComponent,
-  notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
+  notFoundComponent: NotFoundComponent,
+  component: RootComponent,
 });
 
-function RootShell({ children }: { children: ReactNode }) {
+function RootComponent() {
   return (
     <html lang="en">
       <head>
         <HeadContent />
       </head>
       <body>
-        {children}
+        <Outlet />
         <Scripts />
       </body>
     </html>
-  );
-}
-
-function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
-
-  return (
-    <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
-    </QueryClientProvider>
   );
 }

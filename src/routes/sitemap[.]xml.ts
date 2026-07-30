@@ -8,6 +8,7 @@ const BASE_URL = "https://www.pestr.in";
 
 interface SitemapEntry {
   path: string;
+  lastmod?: string;
   changefreq?:
     | "always"
     | "hourly"
@@ -23,22 +24,24 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const entries: SitemapEntry[] = [
-          { path: "/", changefreq: "weekly", priority: "1.0" },
+        const currentDate = new Date().toISOString().split("T")[0]; // YYYY-MM-DD format
 
-          { path: "/services", changefreq: "monthly", priority: "0.9" },
-          { path: "/about", changefreq: "monthly", priority: "0.7" },
-          { path: "/contact", changefreq: "monthly", priority: "0.6" },
-          { path: "/pricing", changefreq: "monthly", priority: "0.6" },
-          { path: "/faq", changefreq: "monthly", priority: "0.5" },
-          { path: "/terms", changefreq: "yearly", priority: "0.2" },
-          { path: "/privacy", changefreq: "yearly", priority: "0.3" },
+        const entries: SitemapEntry[] = [
+          { path: "/", lastmod: currentDate, changefreq: "weekly", priority: "1.0" },
+          { path: "/services", lastmod: currentDate, changefreq: "monthly", priority: "0.9" },
+          { path: "/about", lastmod: currentDate, changefreq: "monthly", priority: "0.7" },
+          { path: "/contact", lastmod: currentDate, changefreq: "monthly", priority: "0.6" },
+          { path: "/pricing", lastmod: currentDate, changefreq: "monthly", priority: "0.6" },
+          { path: "/faq", lastmod: currentDate, changefreq: "monthly", priority: "0.5" },
+          { path: "/terms", lastmod: currentDate, changefreq: "yearly", priority: "0.2" },
+          { path: "/privacy", lastmod: currentDate, changefreq: "yearly", priority: "0.3" },
         ];
 
         // Add service pages
         services.forEach((service) => {
           entries.push({
             path: `/${service.slug}`,
+            lastmod: currentDate,
             changefreq: "monthly",
             priority: "0.85",
           });
@@ -49,8 +52,9 @@ export const Route = createFileRoute("/sitemap.xml")({
           cities.forEach((city) => {
             entries.push({
               path: `/${service.slug}/${city.slug}`,
+              lastmod: currentDate,
               changefreq: "monthly",
-              priority: "0.8",
+              priority: "0.80",
             });
           });
         });
@@ -64,9 +68,8 @@ export const Route = createFileRoute("/sitemap.xml")({
           [
             `  <url>`,
             `    <loc>${BASE_URL}${e.path}</loc>`,
-            e.changefreq
-              ? `    <changefreq>${e.changefreq}</changefreq>`
-              : null,
+            e.lastmod ? `    <lastmod>${e.lastmod}</lastmod>` : null,
+            e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
             e.priority ? `    <priority>${e.priority}</priority>` : null,
             `  </url>`,
           ]
@@ -83,8 +86,9 @@ export const Route = createFileRoute("/sitemap.xml")({
 
         return new Response(xml, {
           headers: {
-            "Content-Type": "application/xml",
-            "Cache-Control": "public, max-age=3600",
+            "Content-Type": "application/xml; charset=utf-8",
+            "Cache-Control": "public, max-age=86400, s-maxage=86400", // Cache for 24 hrs
+            "X-Content-Type-Options": "nosniff",
           },
         });
       },

@@ -19,6 +19,9 @@ import {
   Sparkles,
   Download,
   Phone,
+  Bug,
+  Rat,
+  ArrowRight,
 } from "lucide-react";
 import { getWhatsAppLink, TEL_LINK, WA_FORMATTED, WA_NUMBER } from "@/lib/constants";
 
@@ -84,7 +87,7 @@ function Section({
   );
 }
 
-function Nav() {
+export function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur-sm">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 h-14 md:h-16">
@@ -191,6 +194,76 @@ function WhyUs() {
             <h3 className="mt-4 text-base font-semibold text-foreground">{it.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{it.body}</p>
           </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+/* Added Section: Contextual Internal Links for Core Services */
+function CoreServices() {
+  const services = [
+    {
+      title: "Hotel & Resort Pest Control",
+      desc: "Discreet room & public space treatments guaranteed for zero guest disturbance.",
+      icon: <Hotel className="h-5 w-5 text-brass" />,
+      link: "/services",
+    },
+    {
+      title: "Restaurant & Cafe Defense",
+      desc: "Food-safe barrier treatments designed around active kitchen operating hours.",
+      icon: <ChefHat className="h-5 w-5 text-brass" />,
+      link: "/services",
+    },
+    {
+      title: "Commercial Kitchen Control",
+      desc: "FSSAI & HACCP audit-compliant pest barriers for heavy cooking environments.",
+      icon: <Building2 className="h-5 w-5 text-brass" />,
+      link: "/services",
+    },
+    {
+      title: "Cockroach Eradication",
+      desc: "Odorless matrix gel baiting with zero operational downtime for kitchen staff.",
+      icon: <Bug className="h-5 w-5 text-brass" />,
+      link: "/services",
+    },
+    {
+      title: "Rodent Control Protocol",
+      desc: "Tamper-resistant baiting and physical gap exclusion for storage & prep areas.",
+      icon: <Rat className="h-5 w-5 text-brass" />,
+      link: "/services",
+    },
+  ];
+
+  return (
+    <Section
+      id="services-overview"
+      eyebrow="Specialized Solutions"
+      title="Targeted protocols for every hospitality space."
+      sub="Purpose-built pest management designed for strict food-safety standards and guest-first environments."
+    >
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {services.map((s) => (
+          <Link
+            key={s.title}
+            to={s.link}
+            className="group flex flex-col justify-between rounded-xl border border-border bg-card p-6 transition-all hover:border-brass/80 shadow-sm"
+          >
+            <div>
+              <div className="grid h-10 w-10 place-items-center rounded-lg bg-brass/10">
+                {s.icon}
+              </div>
+              <h3 className="mt-4 text-base font-semibold text-foreground group-hover:text-brass transition-colors">
+                {s.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {s.desc}
+              </p>
+            </div>
+            <div className="mt-5 flex items-center gap-1 text-xs font-semibold text-brass">
+              Learn more <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+            </div>
+          </Link>
         ))}
       </div>
     </Section>
@@ -571,11 +644,9 @@ function Footer() {
           </a>
           <a href="#docs" className="hover:text-foreground">Sample report</a>
           <a href="#chemicals" className="hover:text-foreground">Chemistry</a>
-          <Link to="/hotel-pest-control" className="hover:text-foreground">Hotel pest control</Link>
-          <Link to="/restaurant-pest-control" className="hover:text-foreground">Restaurant pest control</Link>
-          <Link to="/commercial-kitchen-pest-control" className="hover:text-foreground">Commercial kitchen pest control</Link>
-          <Link to="/cockroach-control" className="hover:text-foreground">Cockroach control</Link>
-          <Link to="/rodent-control" className="hover:text-foreground">Rodent control</Link>
+          <Link to="/services" className="hover:text-foreground">Services</Link>
+          <Link to="/pricing" className="hover:text-foreground">Pricing</Link>
+          <Link to="/faq" className="hover:text-foreground">FAQ</Link>
           <Link to="/privacy" className="hover:text-foreground">Privacy</Link>
           <Link to="/terms" className="hover:text-foreground">Terms</Link>
           <span>© {new Date().getFullYear()} Pestr</span>
@@ -606,6 +677,7 @@ export default function Landing() {
       <main>
         <Hero />
         <WhyUs />
+        <CoreServices />
         <Chemicals />
         <Docs />
         <Guarantee />
