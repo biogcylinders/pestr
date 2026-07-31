@@ -169,7 +169,7 @@ function ServicesContent() {
 
   return (
     <div className="space-y-12 pt-2">
-      {/* 1. SERVICE CARDS SECTION (PROMINENT TOP POSITION) */}
+      {/* 1. SERVICE CARDS SECTION */}
       <section className="space-y-6">
         {/* Category Filter Tabs */}
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border/60 pb-4">
@@ -248,25 +248,22 @@ function ServicesContent() {
 
                 {/* Bottom Actions */}
                 <div className="mt-6 pt-4 border-t border-border/60 space-y-3">
-                  <div className="flex items-center justify-between">
+                  {/* SEO-Friendly City Crawl Links instead of <select> */}
+                  <div className="space-y-1.5">
                     <span className="text-[11px] font-semibold text-muted-foreground flex items-center gap-1">
-                      <MapPin className="h-3 w-3 text-primary" /> Location:
+                      <MapPin className="h-3 w-3 text-primary" /> Popular Cities:
                     </span>
-                    <select
-                      onChange={(e) => {
-                        if (e.target.value) {
-                          window.location.href = `/${service.slug}/${e.target.value}`;
-                        }
-                      }}
-                      defaultValue={defaultCity}
-                      className="text-xs bg-background border border-border rounded-md px-2 py-1 font-medium text-foreground focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer"
-                    >
+                    <div className="flex flex-wrap gap-1.5">
                       {cities.map((c) => (
-                        <option key={c.slug} value={c.slug}>
+                        <Link
+                          key={c.slug}
+                          to={`/${service.slug}/${c.slug}` as any}
+                          className="text-[11px] bg-muted/50 hover:bg-primary/10 hover:text-primary border border-border/60 rounded px-2 py-0.5 font-medium transition-colors"
+                        >
                           {c.name}
-                        </option>
+                        </Link>
                       ))}
-                    </select>
+                    </div>
                   </div>
 
                   <Link

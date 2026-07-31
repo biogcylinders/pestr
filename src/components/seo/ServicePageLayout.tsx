@@ -34,14 +34,20 @@ export default function ServicePageLayout({
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col antialiased">
+      {/* Service Schema for deep service pages */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Organization",
-            name: COMPANY_NAME,
-            url: SITE_URL,
+            "@type": "Service",
+            name: heroTitle,
+            description: heroText,
+            provider: {
+              "@type": "Organization",
+              name: COMPANY_NAME,
+              url: SITE_URL,
+            },
           }),
         }}
       />
@@ -96,13 +102,21 @@ export default function ServicePageLayout({
       <footer className="border-t border-border bg-card py-8 mt-auto">
         <div className="mx-auto max-w-6xl px-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <Logo />
-          <div className="flex flex-wrap gap-x-5 gap-y-1 text-xs text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
             <Link to="/" className="hover:text-foreground">Home</Link>
             <Link to="/services" className="hover:text-foreground">Services</Link>
             <Link to="/pricing" className="hover:text-foreground">Pricing</Link>
             <Link to="/faq" className="hover:text-foreground">FAQ</Link>
             <Link to="/about" className="hover:text-foreground">About</Link>
             <Link to="/contact" className="hover:text-foreground">Contact</Link>
+            
+            {/* Added Social Profiles for Brand Authority */}
+            <span className="hidden md:inline text-border">|</span>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Facebook</a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">X (Twitter)</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Instagram</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">LinkedIn</a>
+
             <span>© {new Date().getFullYear()} Pestr</span>
           </div>
         </div>

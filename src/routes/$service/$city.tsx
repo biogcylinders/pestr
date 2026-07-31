@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import ServicePageLayout from "@/components/seo/ServicePageLayout";
 import { services } from "@/data/services";
 import { cities } from "@/data/cities";
-import { getWhatsAppLink, TEL_LINK, WA_FORMATTED } from "@/lib/constants";
+import { getWhatsAppLink, TEL_LINK, WA_FORMATTED, SITE_URL } from "@/lib/constants";
 import {
   ShieldCheck,
   MapPin,
@@ -19,33 +19,71 @@ import {
   Search,
   Droplets,
   Award,
-  CalendarCheck,
   Navigation,
 } from "lucide-react";
 
+// Helper to safely format slug to Title Case
+function formatSlugToTitle(slug?: string): string {
+  if (!slug) return "Commercial Pest Control";
+  return slug
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
 export const Route = createFileRoute("/$service/$city")({
+  head: ({ params }) => {
+    const rawServiceSlug = params?.service || "";
+    const rawCitySlug = params?.city || "";
+
+    const currentService = (services || []).find(
+      (s) => s?.slug && typeof s.slug === "string" && s.slug.toLowerCase() === rawServiceSlug.toLowerCase()
+    );
+    const currentCity = (cities || []).find(
+      (c) => c?.slug && typeof c.slug === "string" && c.slug.toLowerCase() === rawCitySlug.toLowerCase()
+    );
+
+    const serviceTitle = currentService?.title || formatSlugToTitle(rawServiceSlug);
+    const cityName = currentCity?.name || "Varanasi";
+    const cityState = currentCity?.state || "Uttar Pradesh";
+
+    const title = `${serviceTitle} in ${cityName}, ${cityState} | FSSAI Audit Ready | Pestr`;
+    const description = `Professional ${serviceTitle.toLowerCase()} services in ${cityName}. FSSAI & HACCP compliant, zero downtime, odorless gel treatments with a 30-day guarantee.`;
+    const canonical = `${SITE_URL}/${rawServiceSlug}/${rawCitySlug}`;
+
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description.slice(0, 160) },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description.slice(0, 160) },
+        { property: "og:type", content: "website" },
+      ],
+      links: [{ rel: "canonical", href: canonical }],
+    };
+  },
   component: ServiceCityPage,
 });
 
 function ServiceCityPage() {
   const params = Route.useParams() || {};
-  const rawServiceSlug = params.service || "";
-  const rawCitySlug = params.city || "";
+  const rawServiceSlug = params?.service || "";
+  const rawCitySlug = params?.city || "";
 
   // 1. Safe Lookup for Services
-  const currentService =
-    services.find(
-      (s) => s?.slug && s.slug.toLowerCase() === rawServiceSlug.toLowerCase()
-    ) ||
-    services[0] || {
-      slug: "hotel-pest-control",
-      title: "Commercial Pest Control",
-    };
+  const foundService = (services || []).find(
+    (s) => s?.slug && typeof s.slug === "string" && s.slug.toLowerCase() === rawServiceSlug.toLowerCase()
+  );
 
-  // 2. Safe Lookup for City Data with rich defaults
+  const currentService = foundService || {
+    slug: rawServiceSlug || "pest-control",
+    title: formatSlugToTitle(rawServiceSlug),
+  };
+
+  // 2. Safe Lookup for City Data
   const currentCity =
-    cities.find(
-      (c) => c?.slug && c.slug.toLowerCase() === rawCitySlug.toLowerCase()
+    (cities || []).find(
+      (c) => c?.slug && typeof c.slug === "string" && c.slug.toLowerCase() === rawCitySlug.toLowerCase()
     ) ||
     cities[0] || {
       slug: "varanasi",
@@ -73,7 +111,7 @@ function ServiceCityPage() {
         "Varanasi's dense heritage food clusters require strict, non-spray gel matrices that eliminate pests without interrupting continuous kitchen operations or violating FSSAI guidelines.",
     };
 
-  const serviceTitle = currentService.title || "Pest Control";
+  const serviceTitle = currentService.title || formatSlugToTitle(rawServiceSlug);
   const serviceTitleLower = serviceTitle.toLowerCase();
   const cityName = currentCity.name || "Varanasi";
   const cityState = currentCity.state || "Uttar Pradesh";
@@ -88,7 +126,7 @@ function ServiceCityPage() {
       extraContent={
         <div className="space-y-8 text-foreground">
           
-          {/* ==================== 1. TOP CARDS & EXPRESS BOOKING ==================== */}
+          {/* TOP CARDS & EXPRESS BOOKING */}
           <div className="grid lg:grid-cols-3 gap-6">
             
             {/* Feature Card 1 */}
@@ -173,7 +211,7 @@ function ServiceCityPage() {
 
           </div>
 
-          {/* ==================== 2. DEEP LOCALIZED CITY INTEL ==================== */}
+          {/* DEEP LOCALIZED CITY INTEL */}
           <section className="rounded-2xl border border-border bg-card p-6 md:p-8 space-y-6 shadow-sm">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-border/60 pb-4 gap-2">
               <div className="flex items-center gap-2.5">
@@ -226,7 +264,7 @@ function ServiceCityPage() {
             </div>
           </section>
 
-          {/* ==================== 3. STEP-BY-STEP SERVICE PROTOCOL ==================== */}
+          {/* STEP-BY-STEP SERVICE PROTOCOL */}
           <section className="rounded-2xl border border-border bg-card p-6 md:p-8 space-y-6 shadow-sm">
             <div className="flex items-center justify-between border-b border-border/60 pb-4">
               <div>
@@ -286,7 +324,7 @@ function ServiceCityPage() {
             </div>
           </section>
 
-          {/* ==================== 4. PROPERTY TYPES WE SERVE ==================== */}
+          {/* PROPERTY TYPES WE SERVE */}
           <section className="space-y-4">
             <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
               Commercial Properties Covered in {cityName}
@@ -304,14 +342,14 @@ function ServiceCityPage() {
             </div>
           </section>
 
-          {/* ==================== 5. RELATED SERVICES LINKS ==================== */}
+          {/* RELATED SERVICES LINKS */}
           <section className="space-y-4 pt-4 border-t border-border">
             <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
               Explore Other Services in {cityName}
             </h3>
             <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
               {(services || [])
-                .filter((s) => s?.slug && s.slug !== currentService.slug)
+                .filter((s) => s?.slug && typeof s.slug === "string" && s.slug !== currentService.slug)
                 .slice(0, 4)
                 .map((s) => (
                   <Link
@@ -319,7 +357,7 @@ function ServiceCityPage() {
                     to={`/${s.slug}/${citySlug}` as any}
                     className="rounded-xl border border-border bg-card p-4 flex items-center justify-between text-sm font-medium text-foreground hover:border-primary hover:bg-primary/5 transition-all group"
                   >
-                    <span className="truncate pr-2">{s.title || "Service"}</span>
+                    <span className="truncate pr-2">{s.title || formatSlugToTitle(s.slug)}</span>
                     <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary shrink-0 transition-transform group-hover:translate-x-1" />
                   </Link>
                 ))}
