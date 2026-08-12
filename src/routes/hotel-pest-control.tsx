@@ -23,6 +23,11 @@ export const Route = createFileRoute("/hotel-pest-control")({
       },
       { property: "og:url", content: "https://www.pestr.in/hotel-pest-control" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://www.pestr.in/newlogo.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Hotel Pest Control in India | Pestr" },
+      { name: "twitter:description", content: "Hospitality-focused hotel pest control with transparent treatment notes, chemical disclosure and a written 30-day guarantee." },
+      { name: "twitter:image", content: "https://www.pestr.in/newlogo.png" },
     ],
     links: [{ rel: "canonical", href: "https://www.pestr.in/hotel-pest-control" }],
     scripts: [
@@ -95,6 +100,11 @@ function HotelPestControlPage() {
         },
       ]}
       serviceAreas={["Hotels", "Resorts", "Homestays", "Banquet spaces"]}
+      breadcrumbs={[
+        { name: "Home", url: "https://www.pestr.in/" },
+        { name: "Services", url: "https://www.pestr.in/services" },
+        { name: "Hotel Pest Control", url: "https://www.pestr.in/hotel-pest-control" },
+      ]}
       relatedLinks={[
         { to: "/restaurant-pest-control", label: "Restaurant pest control" },
         { to: "/commercial-kitchen-pest-control", label: "Commercial kitchen pest control" },

@@ -23,6 +23,11 @@ export const Route = createFileRoute("/rodent-control")({
       },
       { property: "og:url", content: "https://www.pestr.in/rodent-control" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://www.pestr.in/newlogo.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Rodent Control Services | Pestr" },
+      { name: "twitter:description", content: "Rodent control service with inspection, monitoring and documented follow-up for hospitality and food businesses." },
+      { name: "twitter:image", content: "https://www.pestr.in/newlogo.png" },
     ],
     links: [{ rel: "canonical", href: "https://www.pestr.in/rodent-control" }],
     scripts: [

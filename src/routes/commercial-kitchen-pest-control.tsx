@@ -23,6 +23,11 @@ export const Route = createFileRoute("/commercial-kitchen-pest-control")({
       },
       { property: "og:url", content: "https://www.pestr.in/commercial-kitchen-pest-control" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://www.pestr.in/newlogo.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Commercial Kitchen Pest Control | Pestr" },
+      { name: "twitter:description", content: "Commercial kitchen pest control built for busy food businesses that need reliable prevention and audit-ready records." },
+      { name: "twitter:image", content: "https://www.pestr.in/newlogo.png" },
     ],
     links: [{ rel: "canonical", href: "https://www.pestr.in/commercial-kitchen-pest-control" }],
     scripts: [
@@ -95,6 +100,11 @@ function CommercialKitchenPestControlPage() {
         },
       ]}
       serviceAreas={["Cloud kitchens", "Central kitchens", "Catering facilities", "Institutional kitchens"]}
+      breadcrumbs={[
+        { name: "Home", url: "https://www.pestr.in/" },
+        { name: "Services", url: "https://www.pestr.in/services" },
+        { name: "Commercial Kitchen Pest Control", url: "https://www.pestr.in/commercial-kitchen-pest-control" },
+      ]}
       relatedLinks={[
         { to: "/restaurant-pest-control", label: "Restaurant pest control" },
         { to: "/hotel-pest-control", label: "Hotel pest control" },

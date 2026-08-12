@@ -23,6 +23,11 @@ export const Route = createFileRoute("/restaurant-pest-control")({
       },
       { property: "og:url", content: "https://www.pestr.in/restaurant-pest-control" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://www.pestr.in/newlogo.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Restaurant Pest Control in India | Pestr" },
+      { name: "twitter:description", content: "Restaurant pest control with documented inspection, clear chemistry and faster response for high-risk food-service environments." },
+      { name: "twitter:image", content: "https://www.pestr.in/newlogo.png" },
     ],
     links: [{ rel: "canonical", href: "https://www.pestr.in/restaurant-pest-control" }],
     scripts: [
@@ -95,6 +100,11 @@ function RestaurantPestControlPage() {
         },
       ]}
       serviceAreas={["Restaurants", "Cafes", "QSRs", "Bars and pubs"]}
+      breadcrumbs={[
+        { name: "Home", url: "https://www.pestr.in/" },
+        { name: "Services", url: "https://www.pestr.in/services" },
+        { name: "Restaurant Pest Control", url: "https://www.pestr.in/restaurant-pest-control" },
+      ]}
       relatedLinks={[
         { to: "/hotel-pest-control", label: "Hotel pest control" },
         { to: "/commercial-kitchen-pest-control", label: "Commercial kitchen pest control" },

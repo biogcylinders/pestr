@@ -11,6 +11,7 @@ import { useEffect } from "react";
 
 import appCss from "../styles.css?url";
 import naviconUrl from "../assets/navicon.png?url";
+import newlogoUrl from "../assets/newlogo.png?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { cities } from "@/data/cities";
 
@@ -83,7 +84,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Pestr: transparent, food-safe pest management for hotels, restaurants and cloud kitchens. Full chemical disclosure, FSSAI-ready docs, 30-day guarantee." },
       { property: "og:title", content: "Pestr — Professional Pest Control For Businesses" },
       { property: "og:description", content: "Pestr: transparent, food-safe pest management for hotels, restaurants and cloud kitchens. Full chemical disclosure, FSSAI-ready docs, 30-day guarantee." },
+      { property: "og:url", content: "https://www.pestr.in/" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: newlogoUrl },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Pestr — Professional Pest Control For Businesses" },
+      { name: "twitter:description", content: "Pestr: transparent, food-safe pest management for hotels, restaurants and cloud kitchens. Full chemical disclosure, FSSAI-ready docs, 30-day guarantee." },
+      { name: "twitter:image", content: newlogoUrl },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

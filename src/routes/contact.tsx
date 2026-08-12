@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import ServicePageLayout from "@/components/seo/ServicePageLayout";
+import { CitySelector } from "@/components/CitySelector";
+import { cities } from "@/data/cities";
 import { getWhatsAppLink, TEL_LINK, WA_FORMATTED } from "@/lib/constants";
 import { MessageCircle, CheckCircle2, Phone } from "lucide-react";
 
@@ -9,6 +11,14 @@ export const Route = createFileRoute("/contact")({
     meta: [
       { title: "Contact Pestr — Book a Free Site Inspection" },
       { name: "description", content: "Contact Pestr for a complimentary site inspection and a tailored pest-control plan for your hospitality property." },
+      { property: "og:title", content: "Contact Pestr — Book a Free Site Inspection" },
+      { property: "og:description", content: "Contact Pestr for a complimentary site inspection and a tailored pest-control plan for your hospitality property." },
+      { property: "og:url", content: "https://www.pestr.in/contact" },
+      { property: "og:image", content: "https://www.pestr.in/newlogo.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Contact Pestr — Book a Free Site Inspection" },
+      { name: "twitter:description", content: "Contact Pestr for a complimentary site inspection and a tailored pest-control plan for your hospitality property." },
+      { name: "twitter:image", content: "https://www.pestr.in/newlogo.png" },
     ],
     links: [{ rel: "canonical", href: "https://www.pestr.in/contact" }],
   }),
@@ -20,10 +30,18 @@ function ContactForm() {
   const [formData, setFormData] = useState({
     propertyName: "",
     propertyType: "Restaurant",
-    city: "",
+    city: cities[0]?.name || "",
     phone: "",
     notes: "",
   });
+  const [selectedCity, setSelectedCity] = useState(cities[0]?.slug || "");
+
+  const handleCitySelect = (citySlug: string) => {
+    const city = cities.find((item) => item.slug === citySlug);
+    if (!city) return;
+    setSelectedCity(citySlug);
+    setFormData((prev) => ({ ...prev, city: city.name }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,6 +74,7 @@ function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      <CitySelector currentCitySlug={selectedCity} onSelectCity={handleCitySelect} />
       <div className="grid gap-5 md:grid-cols-2">
         <div>
           <label htmlFor="propertyName" className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1.5">

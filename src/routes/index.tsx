@@ -18,6 +18,11 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:url", content: "https://www.pestr.in/" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://www.pestr.in/newlogo.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Pestr — Reliable Pest Control for Hotels & Restaurants" },
+      { name: "twitter:description", content: "Simple, honest pest management for hospitality — full chemical disclosure, FSSAI-ready documentation, and a written 30-day guarantee." },
+      { name: "twitter:image", content: "https://www.pestr.in/newlogo.png" },
     ],
     links: [{ rel: "canonical", href: "https://www.pestr.in/" }],
     scripts: [

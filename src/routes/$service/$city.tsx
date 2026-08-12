@@ -57,7 +57,13 @@ export const Route = createFileRoute("/$service/$city")({
         { name: "description", content: description.slice(0, 160) },
         { property: "og:title", content: title },
         { property: "og:description", content: description.slice(0, 160) },
+        { property: "og:url", content: canonical },
         { property: "og:type", content: "website" },
+        { property: "og:image", content: "https://www.pestr.in/newlogo.png" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description.slice(0, 160) },
+        { name: "twitter:image", content: "https://www.pestr.in/newlogo.png" },
       ],
       links: [{ rel: "canonical", href: canonical }],
     };

@@ -23,6 +23,11 @@ export const Route = createFileRoute("/cockroach-control")({
       },
       { property: "og:url", content: "https://www.pestr.in/cockroach-control" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://www.pestr.in/newlogo.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Cockroach Control Services | Pestr" },
+      { name: "twitter:description", content: "Cockroach control service for hospitality businesses with transparent treatment plans, documentation and quick follow-up." },
+      { name: "twitter:image", content: "https://www.pestr.in/newlogo.png" },
     ],
     links: [{ rel: "canonical", href: "https://www.pestr.in/cockroach-control" }],
     scripts: [
@@ -69,6 +74,11 @@ function CockroachControlPage() {
         },
       ]}
       serviceAreas={["Hotels", "Restaurants", "Cloud kitchens", "Warehouses"]}
+      breadcrumbs={[
+        { name: "Home", url: "https://www.pestr.in/" },
+        { name: "Services", url: "https://www.pestr.in/services" },
+        { name: "Cockroach Control", url: "https://www.pestr.in/cockroach-control" },
+      ]}
       relatedLinks={[
         { to: "/restaurant-pest-control", label: "Restaurant pest control" },
         { to: "/commercial-kitchen-pest-control", label: "Commercial kitchen pest control" },

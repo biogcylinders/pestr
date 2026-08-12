@@ -12,6 +12,7 @@ type ServicePageLayoutProps = {
   serviceAreas?: string[];
   relatedLinks?: Array<{ to: string; label: string }>;
   extraContent?: ReactNode;
+  breadcrumbs?: Array<{ name: string; url: string }>;
 };
 
 function NavLink({ to, children }: { to: string; children: string }) {
@@ -29,6 +30,7 @@ export default function ServicePageLayout({
   heroTitle,
   heroText,
   extraContent,
+  breadcrumbs,
 }: ServicePageLayoutProps) {
   const waLink = getWhatsAppLink("Hi, I'd like to book a site inspection for my property.");
 
@@ -51,6 +53,23 @@ export default function ServicePageLayout({
           }),
         }}
       />
+      {breadcrumbs && breadcrumbs.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: breadcrumbs.map((crumb, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                name: crumb.name,
+                item: crumb.url,
+              })),
+            }),
+          }}
+        />
+      )}
 
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
