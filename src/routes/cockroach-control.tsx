@@ -74,14 +74,15 @@ function CockroachControlPage() {
         },
       ]}
       serviceAreas={["Hotels", "Restaurants", "Cloud kitchens", "Warehouses"]}
+      relatedLinks={[
+        { to: "/restaurant-pest-control", label: "Restaurant pest control" },
+        { to: "/commercial-kitchen-pest-control", label: "Commercial kitchen pest control" },
+      ]}
+      serviceSlug="cockroach-control"
       breadcrumbs={[
         { name: "Home", url: "https://www.pestr.in/" },
         { name: "Services", url: "https://www.pestr.in/services" },
         { name: "Cockroach Control", url: "https://www.pestr.in/cockroach-control" },
-      ]}
-      relatedLinks={[
-        { to: "/restaurant-pest-control", label: "Restaurant pest control" },
-        { to: "/commercial-kitchen-pest-control", label: "Commercial kitchen pest control" },
       ]}
     />
   );

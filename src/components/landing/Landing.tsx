@@ -24,6 +24,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { getWhatsAppLink, TEL_LINK, WA_FORMATTED, WA_NUMBER } from "@/lib/constants";
+import SiteFooter from "@/components/layout/SiteFooter";
 
 const WA_LINK = getWhatsAppLink();
 
@@ -200,47 +201,59 @@ function WhyUs() {
   );
 }
 
-/* Added Section: Contextual Internal Links for Core Services */
+/* Homepage Services section — links to parent service pages, not city-specific URLs */
 function CoreServices() {
   const services = [
     {
-      title: "Hotel & Resort Pest Control",
-      desc: "Discreet room & public space treatments guaranteed for zero guest disturbance.",
-      icon: <Hotel className="h-5 w-5 text-brass" />,
-      link: "/services",
-    },
-    {
-      title: "Restaurant & Cafe Defense",
-      desc: "Food-safe barrier treatments designed around active kitchen operating hours.",
-      icon: <ChefHat className="h-5 w-5 text-brass" />,
-      link: "/services",
-    },
-    {
-      title: "Commercial Kitchen Control",
-      desc: "FSSAI & HACCP audit-compliant pest barriers for heavy cooking environments.",
-      icon: <Building2 className="h-5 w-5 text-brass" />,
-      link: "/services",
-    },
-    {
-      title: "Cockroach Eradication",
+      title: "Cockroach Control",
       desc: "Odorless matrix gel baiting with zero operational downtime for kitchen staff.",
       icon: <Bug className="h-5 w-5 text-brass" />,
-      link: "/services",
+      link: "/cockroach-control",
     },
     {
-      title: "Rodent Control Protocol",
-      desc: "Tamper-resistant baiting and physical gap exclusion for storage & prep areas.",
+      title: "Rodent Control",
+      desc: "Tamper-resistant baiting and physical gap exclusion for storage and prep areas.",
       icon: <Rat className="h-5 w-5 text-brass" />,
-      link: "/services",
+      link: "/rodent-control",
+    },
+    {
+      title: "Termite Control",
+      desc: "Soil treatment and baiting systems protecting structural integrity.",
+      icon: <Bug className="h-5 w-5 text-brass" />,
+      link: "/termite-treatment",
+    },
+    {
+      title: "Mosquito Control",
+      desc: "Targeted larvicide and adulticide for outdoor dining and patio areas.",
+      icon: <Bug className="h-5 w-5 text-brass" />,
+      link: "/mosquito-control",
+    },
+    {
+      title: "Commercial Kitchen Pest Control",
+      desc: "FSSAI and HACCP audit-compliant pest barriers for heavy cooking environments.",
+      icon: <Building2 className="h-5 w-5 text-brass" />,
+      link: "/commercial-kitchen-pest-control",
+    },
+    {
+      title: "Hotel Pest Control",
+      desc: "Discreet room and public space treatments with zero guest disturbance.",
+      icon: <Hotel className="h-5 w-5 text-brass" />,
+      link: "/hotel-pest-control",
+    },
+    {
+      title: "Restaurant Pest Control",
+      desc: "Food-safe barrier treatments designed around active kitchen operating hours.",
+      icon: <ChefHat className="h-5 w-5 text-brass" />,
+      link: "/restaurant-pest-control",
     },
   ];
 
   return (
     <Section
       id="services-overview"
-      eyebrow="Specialized Solutions"
-      title="Targeted protocols for every hospitality space."
-      sub="Purpose-built pest management designed for strict food-safety standards and guest-first environments."
+      eyebrow="Our Pest Control Services"
+      title="Professional pest control for every hospitality space."
+      sub="Choose a service to learn more, then select your city for localized treatment protocols."
     >
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {services.map((s) => (
@@ -261,10 +274,18 @@ function CoreServices() {
               </p>
             </div>
             <div className="mt-5 flex items-center gap-1 text-xs font-semibold text-brass">
-              Learn more <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+              View service <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
             </div>
           </Link>
         ))}
+      </div>
+      <div className="mt-8 text-center">
+        <Link
+          to="/services"
+          className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground hover:border-brass transition-colors"
+        >
+          View all services <ArrowRight className="h-4 w-4" />
+        </Link>
       </div>
     </Section>
   );
@@ -632,28 +653,7 @@ function FinalCTA() {
 }
 
 function Footer() {
-  return (
-    <footer className="border-t border-border bg-card py-10 text-sm">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 md:flex-row md:items-center md:justify-between">
-        <div className="flex items-center font-semibold">
-          <Logo />
-        </div>
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
-          <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
-            WhatsApp {WA_NUMBER}
-          </a>
-          <a href="#docs" className="hover:text-foreground">Sample report</a>
-          <a href="#chemicals" className="hover:text-foreground">Chemistry</a>
-          <Link to="/services" className="hover:text-foreground">Services</Link>
-          <Link to="/pricing" className="hover:text-foreground">Pricing</Link>
-          <Link to="/faq" className="hover:text-foreground">FAQ</Link>
-          <Link to="/privacy" className="hover:text-foreground">Privacy</Link>
-          <Link to="/terms" className="hover:text-foreground">Terms</Link>
-          <span>© {new Date().getFullYear()} Pestr</span>
-        </div>
-      </div>
-    </footer>
-  );
+  return <SiteFooter />;
 }
 
 function FloatingWA() {

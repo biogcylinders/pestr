@@ -78,6 +78,12 @@ function RodentControlPage() {
         { to: "/hotel-pest-control", label: "Hotel pest control" },
         { to: "/cockroach-control", label: "Cockroach control" },
       ]}
+      serviceSlug="rodent-control"
+      breadcrumbs={[
+        { name: "Home", url: "https://www.pestr.in/" },
+        { name: "Services", url: "https://www.pestr.in/services" },
+        { name: "Rodent Control", url: "https://www.pestr.in/rodent-control" },
+      ]}
     />
   );
 }

@@ -109,6 +109,7 @@ function CommercialKitchenPestControlPage() {
         { to: "/restaurant-pest-control", label: "Restaurant pest control" },
         { to: "/hotel-pest-control", label: "Hotel pest control" },
       ]}
+      serviceSlug="commercial-kitchen-pest-control"
     />
   );
 }

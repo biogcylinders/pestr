@@ -1,15 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import ServicePageLayout from "@/components/seo/ServicePageLayout";
-import { cities } from "@/data/cities";
+import { cities- getCityBySlug } from "@/data/cities";
+import { serviceCatalog } from "@/data/serviceCatalog";
+import { ArrowRight, MapPin } from "lucide-react";
 
 export const Route = createFileRoute("/pest-control/$city")({
   head: ({ params }) => {
-    const city = cities.find((item) => item.slug === params.city);
+    const city = getCityBySlug(params.city);
     const title = city
       ? `Pest Control in ${city.name}, ${city.state} | Pestr`
       : "Pest Control Services | Pestr";
     const description = city
-      ? `Book pest control services in ${city.name} for ${city.pests.join(", ")}.`
+      ? `Professional pest control services in ${city.name} for hotels, restaurants, and commercial kitchens. FSSAI-compliant, audit-ready.`
       : "Professional pest control services for hospitality and commercial properties.";
 
     return {
@@ -21,19 +23,16 @@ export const Route = createFileRoute("/pest-control/$city")({
         { property: "og:url", content: `https://www.pestr.in/pest-control/${params.city}` },
         { property: "og:type", content: "website" },
         { property: "og:image", content: "https://www.pestr.in/newlogo.png" },
-        { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: title },
-        { name: "twitter:description", content: description },
-        { name: "twitter:image", content: "https://www.pestr.in/newlogo.png" },
       ],
+      links: [{ rel: "canonical", href: `https://www.pestr.in/pest-control/${params.city}` }],
     };
   },
   component: PestControlCityPage,
 });
 
 function PestControlCityPage() {
-  const { city } = Route.useParams();
-  const cityData = cities.find((item) => item.slug === city);
+  const { city: citySlug } = Route.useParams();
+  const cityData = getCityBySlug(citySlug);
 
   if (!cityData) {
     return (
@@ -41,10 +40,10 @@ function PestControlCityPage() {
         <div className="max-w-md rounded-xl border border-border bg-card p-8 text-center">
           <h1 className="text-2xl font-semibold text-foreground">City not found</h1>
           <p className="mt-2 text-sm text-muted-foreground">
-            We don’t have a page for this city yet. Try one of the featured locations below.
+            We don't have a page for this city yet. Try one of the featured locations below.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-2">
-            {cities.slice(0, 4).map((item) => (
+            {cities.slice(0, 6).map((item) => (
               <Link
                 key={item.slug}
                 to="/pest-control/$city"
@@ -63,53 +62,78 @@ function PestControlCityPage() {
   return (
     <ServicePageLayout
       heroTitle={`Pest control in ${cityData.name}, ${cityData.state}`}
-      heroText={`Protect your property in ${cityData.name} with inspection-led treatment for ${cityData.pests.join(", ")} and other common local pests.`}
+      heroText={`Professional pest management for hotels, restaurants, and commercial kitchens in ${cityData.name}. FSSAI-compliant treatments with documented visit reports.`}
       bullets={[
-        `Serving nearby areas like ${cityData.nearby.join(", ")}`,
-        "Transparent reporting and follow-up support",
-        "Built for hotels, restaurants and commercial properties",
+        "Food-safe, odorless treatment protocols",
+        "FSSAI & HACCP audit-ready documentation",
+        "30-day written retreat guarantee",
       ]}
       proofPoints={[
         {
-          title: "Local inspection approach",
-          text: `We inspect entry points, storage zones and service corridors in ${cityData.name} so the plan targets the actual pressure areas rather than relying on blanket spraying.`,
+          title: "Local expertise",
+          text: cityData.localNotes,
         },
         {
-          title: "Prevention support",
-          text: `We help teams in ${cityData.name} reduce repeat issues through sanitation advice, monitoring and documented visits.`,
+          title: "Rapid response",
+          text: `${cityData.responseGuarantee} for commercial properties across ${cityData.name}.`,
         },
       ]}
-      serviceAreas={[cityData.name, cityData.state, ...cityData.nearby]}
-      relatedLinks={[
-        { to: "/services", label: "See services" },
-        { to: "/contact", label: "Book a site inspection" },
+      breadcrumbs={[
+        { name: "Home", url: "https://www.pestr.in/" },
+        { name: "Services", url: "https://www.pestr.in/services" },
+        { name: cityData.name, url: `https://www.pestr.in/pest-control/${cityData.slug}` },
       ]}
       extraContent={
-        <section className="rounded-xl border border-border bg-card p-6">
-          <h2 className="text-base font-semibold text-foreground">Common pests in {cityData.name}</h2>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {cityData.pests.map((pest) => (
-              <span key={pest} className="rounded-full border border-border bg-background px-3 py-1.5 text-sm text-muted-foreground">
-                {pest}
-              </span>
-            ))}
-          </div>
-          <div className="mt-6">
-            <h3 className="text-sm font-semibold text-foreground">Other cities</h3>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {cities.map((item) => (
+        <div className="space-y-8">
+          <section className="space-y-4">
+            <div className="flex items-center gap-2">
+              <MapPin className="h-4 w-4 text-primary" />
+              <h2 className="text-lg font-bold text-foreground">
+                Our Services in {cityData.name}
+              </h2>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {serviceCatalog.map((service) => (
                 <Link
-                  key={item.slug}
-                  to="/pest-control/$city"
-                  params={{ city: item.slug }}
-                  className="rounded-full border border-border px-3 py-1.5 text-sm text-muted-foreground hover:border-brass hover:text-foreground"
+                  key={service.slug}
+                  to="/$service/$city"
+                  params={{ service: service.slug, city: cityData.slug }}
+                  className="group rounded-xl border border-border bg-card p-5 flex items-center justify-between hover:border-primary hover:bg-primary/5 transition-all"
                 >
-                  {item.name}
+                  <div>
+                    <h3 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="mt-1 text-xs text-muted-foreground line-clamp-2">
+                      {service.shortDescription}
+                    </p>
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary shrink-0 ml-3 transition-transform group-hover:translate-x-1" />
                 </Link>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
+
+          <section className="space-y-4">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
+              Other Cities
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {cities
+                .filter((c) => c.slug !== cityData.slug)
+                .map((item) => (
+                  <Link
+                    key={item.slug}
+                    to="/pest-control/$city"
+                    params={{ city: item.slug }}
+                    className="rounded-lg border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground hover:border-primary hover:bg-primary/5 transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+            </div>
+          </section>
+        </div>
       }
     />
   );
