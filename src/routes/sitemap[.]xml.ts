@@ -59,6 +59,15 @@ export const Route = createFileRoute("/sitemap.xml")({
           });
         });
 
+        cities.forEach((city) => {
+          entries.push({
+            path: `/pest-control/${city.slug}`,
+            lastmod: currentDate,
+            changefreq: "weekly",
+            priority: "0.75",
+          });
+        });
+
         // Remove duplicate paths
         const uniqueEntries = Array.from(
           new Map(entries.map((e) => [e.path, e])).values()

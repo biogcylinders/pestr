@@ -108,69 +108,71 @@ export function CitySelector({ currentCitySlug, onSelectCity }: CitySelectorProp
               ))}
             </select>
           ) : (
-          <label htmlFor="city-combobox" className="sr-only">
-            Choose city
-          </label>
-            <input
-            id="city-combobox"
-            ref={inputRef}
-            role="combobox"
-            aria-expanded={isOpen}
-            aria-controls="city-listbox"
-            aria-autocomplete="list"
-            aria-activedescendant={
-              highlighted >= 0 && filtered[highlighted] ? `city-option-${filtered[highlighted].slug}` : undefined
-            }
-            className="w-full rounded-lg border border-border/60 bg-background/80 px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-foreground/30"
-            placeholder="Type or choose a city"
-            value={rawInput}
-            onChange={(e) => {
-              const v = e.target.value;
-              setRawInput(v);
-              setLoading(true);
-              setIsOpen(true);
-              setHighlighted(0);
-              if (debounceRef.current) window.clearTimeout(debounceRef.current);
-              debounceRef.current = window.setTimeout(() => {
-                setQuery(v);
-                setLoading(false);
-              }, 250);
-            }}
-            onKeyDown={onKeyDown}
-            onFocus={() => setIsOpen(true)}
-          />
+            <>
+              <label htmlFor="city-combobox" className="sr-only">
+                Choose city
+              </label>
+              <input
+                id="city-combobox"
+                ref={inputRef}
+                role="combobox"
+                aria-expanded={isOpen}
+                aria-controls="city-listbox"
+                aria-autocomplete="list"
+                aria-activedescendant={
+                  highlighted >= 0 && filtered[highlighted] ? `city-option-${filtered[highlighted].slug}` : undefined
+                }
+                className="w-full rounded-lg border border-border/60 bg-background/80 px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-foreground/30"
+                placeholder="Type or choose a city"
+                value={rawInput}
+                onChange={(e) => {
+                  const v = e.target.value;
+                  setRawInput(v);
+                  setLoading(true);
+                  setIsOpen(true);
+                  setHighlighted(0);
+                  if (debounceRef.current) window.clearTimeout(debounceRef.current);
+                  debounceRef.current = window.setTimeout(() => {
+                    setQuery(v);
+                    setLoading(false);
+                  }, 250);
+                }}
+                onKeyDown={onKeyDown}
+                onFocus={() => setIsOpen(true)}
+              />
 
-          {loading && (
-            <div className="absolute right-3 top-3 h-3 w-3 animate-pulse rounded-full bg-foreground/40" />
-          )}
+              {loading && (
+                <div className="absolute right-3 top-3 h-3 w-3 animate-pulse rounded-full bg-foreground/40" />
+              )}
 
-          {isOpen && (
-            <ul
-              id="city-listbox"
-              role="listbox"
-              className="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-lg border border-border/60 bg-background/90 py-1 text-sm shadow-lg"
-            >
-              {filtered.map((c, idx) => {
-                const isActive = idx === highlighted;
-                return (
-                  <li
-                    id={`city-option-${c.slug}`}
-                    key={c.slug}
-                    role="option"
-                    aria-selected={isActive}
-                    className={`cursor-pointer px-3 py-2 ${
-                      isActive ? "bg-foreground/10 text-foreground" : "text-muted-foreground"
-                    }`}
-                    onMouseEnter={() => setHighlighted(idx)}
-                    onMouseDown={(e) => e.preventDefault()}
-                    onClick={() => selectCity(c)}
-                  >
-                    {c.name}
-                  </li>
-                );
-              })}
-            </ul>
-          )}
+              {isOpen && (
+                <ul
+                  id="city-listbox"
+                  role="listbox"
+                  className="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-lg border border-border/60 bg-background/90 py-1 text-sm shadow-lg"
+                >
+                  {filtered.map((c, idx) => {
+                    const isActive = idx === highlighted;
+                    return (
+                      <li
+                        id={`city-option-${c.slug}`}
+                        key={c.slug}
+                        role="option"
+                        aria-selected={isActive}
+                        className={`cursor-pointer px-3 py-2 ${
+                          isActive ? "bg-foreground/10 text-foreground" : "text-muted-foreground"
+                        }`}
+                        onMouseEnter={() => setHighlighted(idx)}
+                        onMouseDown={(e) => e.preventDefault()}
+                        onClick={() => selectCity(c)}
+                      >
+                        {c.name}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </>
           )}
         </div>
       </div>

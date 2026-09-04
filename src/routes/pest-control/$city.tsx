@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import ServicePageLayout from "@/components/seo/ServicePageLayout";
-import { cities- getCityBySlug } from "@/data/cities";
+import { cities, getCityBySlug } from "@/data/cities";
 import { serviceCatalog } from "@/data/serviceCatalog";
 import { ArrowRight, MapPin } from "lucide-react";
 
@@ -14,17 +14,41 @@ export const Route = createFileRoute("/pest-control/$city")({
       ? `Professional pest control services in ${city.name} for hotels, restaurants, and commercial kitchens. FSSAI-compliant, audit-ready.`
       : "Professional pest control services for hospitality and commercial properties.";
 
+    const canonical = `https://www.pestr.in/pest-control/${params.city}`;
+
     return {
       meta: [
         { title },
         { name: "description", content: description },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
-        { property: "og:url", content: `https://www.pestr.in/pest-control/${params.city}` },
+        { property: "og:url", content: canonical },
         { property: "og:type", content: "website" },
         { property: "og:image", content: "https://www.pestr.in/newlogo.png" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: "https://www.pestr.in/newlogo.png" },
       ],
-      links: [{ rel: "canonical", href: `https://www.pestr.in/pest-control/${params.city}` }],
+      links: [{ rel: "canonical", href: canonical }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: "Pestr",
+            url: "https://www.pestr.in",
+            telephone: "+91-9648116960",
+            areaServed: city ? city.name : "India",
+            description,
+            address: {
+              "@type": "PostalAddress",
+              addressCountry: "IN",
+            },
+          }),
+        },
+      ],
     };
   },
   component: PestControlCityPage,

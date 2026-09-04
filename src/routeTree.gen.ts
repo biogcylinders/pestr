@@ -17,12 +17,14 @@ import { Route as CommercialKitchenPestControlRouteImport } from './routes/comme
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as HotelPestControlRouteImport } from './routes/hotel-pest-control'
+import { Route as MosquitoControlRouteImport } from './routes/mosquito-control'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RestaurantPestControlRouteImport } from './routes/restaurant-pest-control'
 import { Route as RodentControlRouteImport } from './routes/rodent-control'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as TermiteTreatmentRouteImport } from './routes/termite-treatment'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServiceCityRouteImport } from './routes/$service/$city'
 import { Route as PestControlCityRouteImport } from './routes/pest-control/$city'
@@ -68,6 +70,11 @@ const HotelPestControlRoute = HotelPestControlRouteImport.update({
   path: '/hotel-pest-control',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MosquitoControlRoute = MosquitoControlRouteImport.update({
+  id: '/mosquito-control',
+  path: '/mosquito-control',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
@@ -98,6 +105,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermiteTreatmentRoute = TermiteTreatmentRouteImport.update({
+  id: '/termite-treatment',
+  path: '/termite-treatment',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -123,12 +135,14 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/hotel-pest-control': typeof HotelPestControlRoute
+  '/mosquito-control': typeof MosquitoControlRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/restaurant-pest-control': typeof RestaurantPestControlRoute
   '/rodent-control': typeof RodentControlRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/termite-treatment': typeof TermiteTreatmentRoute
   '/terms': typeof TermsRoute
   '/$service/$city': typeof ServiceCityRoute
   '/pest-control/$city': typeof PestControlCityRoute
@@ -142,12 +156,14 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/hotel-pest-control': typeof HotelPestControlRoute
+  '/mosquito-control': typeof MosquitoControlRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/restaurant-pest-control': typeof RestaurantPestControlRoute
   '/rodent-control': typeof RodentControlRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/termite-treatment': typeof TermiteTreatmentRoute
   '/terms': typeof TermsRoute
   '/$service/$city': typeof ServiceCityRoute
   '/pest-control/$city': typeof PestControlCityRoute
@@ -162,12 +178,14 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/hotel-pest-control': typeof HotelPestControlRoute
+  '/mosquito-control': typeof MosquitoControlRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/restaurant-pest-control': typeof RestaurantPestControlRoute
   '/rodent-control': typeof RodentControlRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/termite-treatment': typeof TermiteTreatmentRoute
   '/terms': typeof TermsRoute
   '/$service/$city': typeof ServiceCityRoute
   '/pest-control/$city': typeof PestControlCityRoute
@@ -183,12 +201,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/hotel-pest-control'
+    | '/mosquito-control'
     | '/pricing'
     | '/privacy'
     | '/restaurant-pest-control'
     | '/rodent-control'
     | '/services'
     | '/sitemap.xml'
+    | '/termite-treatment'
     | '/terms'
     | '/$service/$city'
     | '/pest-control/$city'
@@ -202,12 +222,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/hotel-pest-control'
+    | '/mosquito-control'
     | '/pricing'
     | '/privacy'
     | '/restaurant-pest-control'
     | '/rodent-control'
     | '/services'
     | '/sitemap.xml'
+    | '/termite-treatment'
     | '/terms'
     | '/$service/$city'
     | '/pest-control/$city'
@@ -221,12 +243,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/hotel-pest-control'
+    | '/mosquito-control'
     | '/pricing'
     | '/privacy'
     | '/restaurant-pest-control'
     | '/rodent-control'
     | '/services'
     | '/sitemap.xml'
+    | '/termite-treatment'
     | '/terms'
     | '/$service/$city'
     | '/pest-control/$city'
@@ -241,12 +265,14 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   HotelPestControlRoute: typeof HotelPestControlRoute
+  MosquitoControlRoute: typeof MosquitoControlRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   RestaurantPestControlRoute: typeof RestaurantPestControlRoute
   RodentControlRoute: typeof RodentControlRoute
   ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TermiteTreatmentRoute: typeof TermiteTreatmentRoute
   TermsRoute: typeof TermsRoute
   ServiceCityRoute: typeof ServiceCityRoute
   PestControlCityRoute: typeof PestControlCityRoute
@@ -310,6 +336,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HotelPestControlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mosquito-control': {
+      id: '/mosquito-control'
+      path: '/mosquito-control'
+      fullPath: '/mosquito-control'
+      preLoaderRoute: typeof MosquitoControlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pricing': {
       id: '/pricing'
       path: '/pricing'
@@ -352,6 +385,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/termite-treatment': {
+      id: '/termite-treatment'
+      path: '/termite-treatment'
+      fullPath: '/termite-treatment'
+      preLoaderRoute: typeof TermiteTreatmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -385,12 +425,14 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   HotelPestControlRoute: HotelPestControlRoute,
+  MosquitoControlRoute: MosquitoControlRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   RestaurantPestControlRoute: RestaurantPestControlRoute,
   RodentControlRoute: RodentControlRoute,
   ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TermiteTreatmentRoute: TermiteTreatmentRoute,
   TermsRoute: TermsRoute,
   ServiceCityRoute: ServiceCityRoute,
   PestControlCityRoute: PestControlCityRoute,

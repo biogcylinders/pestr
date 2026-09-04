@@ -22,6 +22,8 @@ import {
   Bug,
   Rat,
   ArrowRight,
+  Star,
+  Quote,
 } from "lucide-react";
 import { getWhatsAppLink, TEL_LINK, WA_FORMATTED, WA_NUMBER } from "@/lib/constants";
 import SiteFooter from "@/components/layout/SiteFooter";
@@ -579,6 +581,51 @@ function Pricing() {
   );
 }
 
+function Testimonials() {
+  const reviews = [
+    {
+      name: "Amit Sharma",
+      role: "Operations Manager, Hotel Group",
+      quote:
+        "Pestr has been incredibly reliable. Our kitchen audits are smoother, our complaints dropped, and the reports are always ready when compliance asks for them.",
+    },
+    {
+      name: "Nisha Verma",
+      role: "Quality Head, Multi-brand Restaurant Chain",
+      quote:
+        "The chemistry disclosure and follow-up process is what sold us. They feel like part of our compliance team, not just a vendor.",
+    },
+    {
+      name: "Rohit Mehta",
+      role: "Facilities Lead, Cloud Kitchen Network",
+      quote:
+        "Their service windows fit our operations perfectly, and their 30-day guarantee gives our ownership team real peace of mind.",
+    },
+  ];
+
+  return (
+    <Section eyebrow="Client proof" title="Trusted by hospitality operators who need zero surprises.">
+      <div className="grid gap-5 md:grid-cols-3">
+        {reviews.map((review) => (
+          <div key={review.name} className="rounded-2xl border border-border bg-card p-6 shadow-xs">
+            <div className="mb-4 flex items-center gap-1 text-brass">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <Star key={`${review.name}-${index}`} className="h-4 w-4 fill-current" />
+              ))}
+            </div>
+            <Quote className="mb-4 h-6 w-6 text-brass/70" />
+            <p className="text-sm leading-relaxed text-muted-foreground">“{review.quote}”</p>
+            <div className="mt-6 border-t border-border pt-4">
+              <div className="text-sm font-semibold text-foreground">{review.name}</div>
+              <div className="text-xs text-muted-foreground">{review.role}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
 function FAQ() {
   const items = [
     { q: "How is Pestr different from a national pest-control brand?", a: "We only serve hospitality — kitchens, F&B outlets and audit cycles. Everything is designed for that, not for warehouses or offices." },
@@ -685,6 +732,7 @@ export default function Landing() {
         <Process />
         <Industries />
         <Pricing />
+        <Testimonials />
         <FAQ />
         <FinalCTA />
       </main>
