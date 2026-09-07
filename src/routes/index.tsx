@@ -30,21 +30,37 @@ export const Route = createFileRoute("/")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Service",
-          serviceType: "Pest Control",
-          provider: {
-            "@type": "Organization",
-            name: "Pestr",
-            url: "https://www.pestr.in",
-            telephone: "+91-9648116960",
-          },
-          areaServed: "IN",
-          audience: {
-            "@type": "BusinessAudience",
-            audienceType: "Hotels, restaurants and commercial kitchens",
-          },
-          description:
-            "Hospitality-focused pest management with full chemical disclosure, FSSAI/HACCP-ready documentation and a written 30-day guarantee.",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://www.pestr.in/#organization",
+              name: "Pestr",
+              url: "https://www.pestr.in/",
+              logo: "https://www.pestr.in/newlogo.png",
+              telephone: "+91-9648116960",
+              description:
+                "Hospitality-focused pest management for hotels, restaurants and commercial kitchens.",
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://www.pestr.in/#website",
+              name: "Pestr",
+              url: "https://www.pestr.in/",
+              publisher: { "@id": "https://www.pestr.in/#organization" },
+            },
+            {
+              "@type": "Service",
+              serviceType: "Pest Control",
+              provider: { "@id": "https://www.pestr.in/#organization" },
+              areaServed: "IN",
+              audience: {
+                "@type": "BusinessAudience",
+                audienceType: "Hotels, restaurants and commercial kitchens",
+              },
+              description:
+                "Hospitality-focused pest management with full chemical disclosure, FSSAI/HACCP-ready documentation and a written 30-day guarantee.",
+            },
+          ],
         }),
       },
       {
