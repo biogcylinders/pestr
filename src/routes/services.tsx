@@ -146,7 +146,16 @@ const serviceList = serviceData.map((service) => {
         "Annual inspection & maintenance plan",
       ],
     },
-  }[service.slug as keyof typeof config];
+  }[
+    service.slug as
+      | "hotel-pest-control"
+      | "restaurant-pest-control"
+      | "commercial-kitchen-pest-control"
+      | "cockroach-control"
+      | "rodent-control"
+      | "termite-treatment"
+      | "mosquito-control"
+  ];
 
   return {
     ...config,

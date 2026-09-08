@@ -5,6 +5,8 @@ export interface CityConfig {
   localPestChallenges: string[];
   keyCommercialHubs: string[];
   propertiesWeServe: string[];
+  pests: string[];
+  nearby: string[];
   responseGuarantee: string;
   localNotes: string;
 }
@@ -32,6 +34,8 @@ export const cities: CityConfig[] = [
       "Banquet Halls & Wedding Lawns",
       "Food Processing & Cold Storage Facilities",
     ],
+    pests: ["German cockroaches", "Rodents", "Mosquitoes", "Flies"],
+    nearby: ["Cantonment", "Godowlia", "Lanka", "Shivpur"],
     responseGuarantee: "2-hour rapid dispatch",
     localNotes:
       "Varanasi's dense heritage structures demand non-invasive gel baiting and silent night-shift treatments so guest experience remains completely undisturbed.",
@@ -56,6 +60,8 @@ export const cities: CityConfig[] = [
       "Corporate Canteens & Cloud Kitchens",
       "Event Venues & Convention Centers",
     ],
+    pests: ["Cockroaches", "Termites", "Flies", "Mosquitoes"],
+    nearby: ["Hazratganj", "Gomti Nagar", "Aliganj", "Indira Nagar"],
     responseGuarantee: "3-hour emergency outbreak guarantee",
     localNotes:
       "Engineered for high-volume Awadhi culinary establishments requiring 100% odorless, FSSAI-compliant gel matrices.",
@@ -80,6 +86,8 @@ export const cities: CityConfig[] = [
       "Industrial Food Prep & Packaging Plants",
       "Dark Kitchens & Quick Service Restaurants (QSR)",
     ],
+    pests: ["Cockroaches", "Rodents", "Drain flies", "Mosquitoes"],
+    nearby: ["Connaught Place", "Aerocity", "Gurugram", "Noida"],
     responseGuarantee: "Dedicated 24/7 across NCR",
     localNotes:
       "Full digital SDS dossier and automated visit logs tailored for strict multinational food safety audits.",

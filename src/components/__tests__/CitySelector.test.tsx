@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
+import { describe, expect, test, vi } from "vitest";
 import { CitySelector } from "../CitySelector";
 import { cities } from "@/data/cities";
 
